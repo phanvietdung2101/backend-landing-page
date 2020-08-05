@@ -10,7 +10,7 @@ import java.util.List;
 public class FeatureCarouselSection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToMany
     private List<FeatureCarousel> featureCarouselList;

@@ -10,7 +10,7 @@ import java.util.List;
 public class BusinessSection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String section_title;
     private String video_url;

@@ -12,8 +12,8 @@ import javax.persistence.Id;
 public class FeatureCarousel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String title;
-    private String desc;
+    private String description;
 }

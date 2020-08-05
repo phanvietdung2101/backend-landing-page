@@ -12,10 +12,10 @@ import javax.persistence.Id;
 public class HeroBranding {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String title;
-    private String desc;
+    private String description;
     private String button_title;
     private String button_href;
     private String background_img;

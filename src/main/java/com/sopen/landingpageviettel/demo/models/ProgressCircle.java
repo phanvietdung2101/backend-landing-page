@@ -5,16 +5,13 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
 @Entity
-public class AboutSection {
+@Data
+public class ProgressCircle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-    private String text;
-
     @OneToMany
-    private List<AboutExpand> aboutExpandList;
+    private List<FeatureProgress> featureProgressList;
 }

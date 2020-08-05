@@ -5,16 +5,19 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
 @Entity
-public class AboutSection {
+@Data
+public class FooterSection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-    private String text;
+    private String logoSrc;
 
-    @OneToMany
-    private List<AboutExpand> aboutExpandList;
+    private String title;
+
+    @ElementCollection
+    private List<String> listText;
+
+    private String href;
 }

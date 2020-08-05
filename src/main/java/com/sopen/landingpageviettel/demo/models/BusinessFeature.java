@@ -2,19 +2,18 @@ package com.sopen.landingpageviettel.demo.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Data
+
 @Entity
+@Data
+@Table(name = "`business_feature`")
 public class BusinessFeature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String icon;
     private String title;
-    private String desc;
+    private String description;
 }

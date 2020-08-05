@@ -7,14 +7,15 @@ import java.util.List;
 
 @Data
 @Entity
-public class AboutSection {
+public class FeatureProgress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-    private String text;
+    private String progress;
 
-    @OneToMany
-    private List<AboutExpand> aboutExpandList;
+    private String featureListTitle;
+
+    @ElementCollection
+    private List<String> featureList;
 }
