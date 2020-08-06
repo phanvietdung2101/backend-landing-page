@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class PartnerClientSelection {
+public class PartnerClientSection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,6 +16,6 @@ public class PartnerClientSelection {
 
     private String text;
 
-    @OneToMany
+    @OneToMany(mappedBy = "partnerClientSection")
     private List<BrandLogo> brandLogoList;
 }

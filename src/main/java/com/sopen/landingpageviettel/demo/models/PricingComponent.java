@@ -18,6 +18,6 @@ public class PricingComponent {
 
     private String popularTitle;
 
-    @OneToMany
+    @OneToMany(mappedBy = "pricingComponent")
     private List<PricingTable> pricingTableList;
 }

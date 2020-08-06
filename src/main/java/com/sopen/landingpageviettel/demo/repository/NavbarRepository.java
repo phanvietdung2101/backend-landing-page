@@ -1,9 +1,7 @@
 package com.sopen.landingpageviettel.demo.repository;
 
 import com.sopen.landingpageviettel.demo.models.Navbar;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public interface NavbarRepository extends JpaRepository<Navbar, Long> {
+public interface NavbarRepository extends CrudRepository<Long, Navbar> {
 }

@@ -15,6 +15,6 @@ public class AboutSection {
     private String title;
     private String text;
 
-    @OneToMany
+    @OneToMany(mappedBy = "aboutSection")
     private List<AboutExpand> aboutExpandList;
 }

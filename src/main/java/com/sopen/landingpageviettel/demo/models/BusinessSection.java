@@ -16,6 +16,6 @@ public class BusinessSection {
     private String video_url;
     private String video_title;
 
-    @OneToMany
+    @OneToMany(mappedBy = "businessSection")
     private List<BusinessFeature> businessFeatureList;
 }

@@ -12,6 +12,6 @@ public class FeatureCarouselSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "featureCarouselSection")
     private List<FeatureCarousel> featureCarouselList;
 }

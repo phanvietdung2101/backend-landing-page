@@ -17,6 +17,34 @@ public class LandingPage {
     @ManyToOne
     private HeroBranding heroBranding;
 
+    @ManyToOne
+    private AboutSection aboutSection;
 
+    @ManyToOne
+    private BusinessSection businessSection;
+
+    @ManyToOne
+    private RequirementSection requirementSection;
+
+    @ManyToOne
+    private FeatureCarouselSection featureCarouselSection;
+
+    @ManyToOne
+    private ProgressCircle progressCircle;
+
+    @ManyToOne
+    private PricingComponent pricingComponent;
+
+    @ManyToOne
+    private PartnerClientSection partnerClientSection;
+
+    @ManyToOne
+    private NewsletterSection newsletterSection;
+
+    @ManyToOne
+    private FooterSection footerSection;
+
+    @ManyToOne
+    private SearchBox searchBox;
 
 }

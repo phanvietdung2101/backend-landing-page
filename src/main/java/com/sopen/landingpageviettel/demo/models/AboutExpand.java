@@ -1,11 +1,9 @@
 package com.sopen.landingpageviettel.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -15,4 +13,9 @@ public class AboutExpand {
     private Long id;
     private String icon;
     private String title;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "about_section_id")
+    private AboutSection aboutSection;
 }
