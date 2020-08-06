@@ -9,13 +9,9 @@ import javax.persistence.*;
 public class LandingPage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     private Navbar navbar;
-
-    @ManyToOne
-    private HeroBranding heroBranding;
-
 
 }
