@@ -2,6 +2,8 @@ package com.sopen.landingpageviettel.demo.repository;
 
 import com.sopen.landingpageviettel.demo.models.PricingComponent;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PricingComponentRepository extends CrudRepository<Long, PricingComponent> {
+@Repository
+public interface PricingComponentRepository extends CrudRepository<PricingComponent, Long> {
 }

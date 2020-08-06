@@ -12,6 +12,6 @@ public class ProgressCircle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "progressCircle")
     private List<FeatureProgress> featureProgressList;
 }

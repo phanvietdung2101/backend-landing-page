@@ -1,5 +1,6 @@
 package com.sopen.landingpageviettel.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,4 +19,9 @@ public class FeatureProgress {
 
     @ElementCollection
     private List<String> featureList;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "progress_circle_id")
+    private ProgressCircle progressCircle;
 }
