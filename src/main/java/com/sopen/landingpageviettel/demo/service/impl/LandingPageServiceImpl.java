@@ -140,4 +140,9 @@ public class LandingPageServiceImpl implements LandingPageService {
         // save landingPage
         return landingPageRepository.save(landingPage);
     }
+
+    @Override
+    public LandingPage getLatest() {
+        return landingPageRepository.findTopByOrderByIdDesc();
+    }
 }

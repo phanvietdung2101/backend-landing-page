@@ -9,4 +9,5 @@ import java.util.List;
 public interface LandingPageService {
     List<LandingPage> findAll();
     LandingPage create(LandingPage landingPage);
+    LandingPage getLatest();
 }

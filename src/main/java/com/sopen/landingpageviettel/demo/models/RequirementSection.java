@@ -14,6 +14,7 @@ public class RequirementSection {
 
     private String title;
     private String description;
+    private String image_url;
 
     @ElementCollection
     private List<String> requirementList;

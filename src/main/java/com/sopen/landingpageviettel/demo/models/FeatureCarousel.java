@@ -14,6 +14,7 @@ public class FeatureCarousel {
 
     private String title;
     private String description;
+    private String image_url;
 
     @ManyToOne
     @JsonIgnore

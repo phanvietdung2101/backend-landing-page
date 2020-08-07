@@ -28,4 +28,9 @@ public class LandingPageController {
     public List<LandingPage> findAll(){
         return landingPageService.findAll();
     }
+
+    @GetMapping("/getLatest")
+    public LandingPage getLatest() {
+        return landingPageService.getLatest();
+    }
 }
