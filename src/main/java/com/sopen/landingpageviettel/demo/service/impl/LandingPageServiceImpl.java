@@ -65,6 +65,9 @@ public class LandingPageServiceImpl implements LandingPageService {
     FooterSectionRepository footerSectionRepository;
 
     @Autowired
+    FooterLinkRepository footerLinkRepository;
+
+    @Autowired
     SearchBoxRepository searchBoxRepository;
 
     @Override
@@ -133,8 +136,14 @@ public class LandingPageServiceImpl implements LandingPageService {
         });
         // save new letter
         newsletterSectionRepository.save(landingPage.getNewsletterSection());
-        // save footer
+        // save footer section
         footerSectionRepository.save(landingPage.getFooterSection());
+        List<FooterLink> footerLinkList = landingPage.getFooterSection().getFooterLinkList();
+        footerLinkList.forEach(footerLink -> {
+            footerLink.setFooterSection(landingPage.getFooterSection());
+            // save footer link
+            footerLinkRepository.save(footerLink);
+        });
         // save searchBox
         searchBoxRepository.save(landingPage.getSearchBox());
         // save landingPage

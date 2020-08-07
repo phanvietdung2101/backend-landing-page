@@ -25,7 +25,7 @@ public class LandingPageController {
     }
 
     @GetMapping("/getAll")
-    public List<LandingPage> findAll(){
+    public List<LandingPage> findAll() {
         return landingPageService.findAll();
     }
 
