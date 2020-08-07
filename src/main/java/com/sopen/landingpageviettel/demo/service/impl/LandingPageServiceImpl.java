@@ -34,6 +34,39 @@ public class LandingPageServiceImpl implements LandingPageService {
     @Autowired
     RequirementSectionRepository requirementSectionRepository;
 
+    @Autowired
+    FeatureCarouselSectionRepository featureCarouselSectionRepository;
+
+    @Autowired
+    FeatureCarouselRepository featureCarouselRepository;
+
+    @Autowired
+    ProgressCircleRepository progressCircleRepository;
+
+    @Autowired
+    FeatureProgressRepository featureProgressRepository;
+
+    @Autowired
+    PricingComponentRepository pricingComponentRepository;
+
+    @Autowired
+    PricingTableRepository pricingTableRepository;
+
+    @Autowired
+    PartnerClientSectionRepository partnerClientSectionRepository;
+
+    @Autowired
+    BrandLogoRepository brandLogoRepository;
+
+    @Autowired
+    NewsletterSectionRepository newsletterSectionRepository;
+
+    @Autowired
+    FooterSectionRepository footerSectionRepository;
+
+    @Autowired
+    SearchBoxRepository searchBoxRepository;
+
     @Override
     public List<LandingPage> findAll() {
         return (List<LandingPage>) landingPageRepository.findAll();
@@ -64,8 +97,46 @@ public class LandingPageServiceImpl implements LandingPageService {
             // save business feature
             businessFeatureRepository.save(businessFeature);
         });
+        // save requirement section
         requirementSectionRepository.save(landingPage.getRequirementSection());
-
+        // save feature carousel section
+        featureCarouselSectionRepository.save(landingPage.getFeatureCarouselSection());
+        List<FeatureCarousel> featureCarouselList = landingPage.getFeatureCarouselSection().getFeatureCarouselList();
+        featureCarouselList.forEach(featureCarousel -> {
+            featureCarousel.setFeatureCarouselSection(landingPage.getFeatureCarouselSection());
+            // save feature carousel
+            featureCarouselRepository.save(featureCarousel);
+        });
+        // save circle progress
+        progressCircleRepository.save(landingPage.getProgressCircle());
+        List<FeatureProgress> featureProgressList = landingPage.getProgressCircle().getFeatureProgressList();
+        featureProgressList.forEach(featureProgress -> {
+            featureProgress.setProgressCircle(landingPage.getProgressCircle());
+            // save feature progress
+            featureProgressRepository.save(featureProgress);
+        });
+        // save pricing component
+        pricingComponentRepository.save(landingPage.getPricingComponent());
+        List<PricingTable> pricingTableList = landingPage.getPricingComponent().getPricingTableList();
+        pricingTableList.forEach(pricingTable -> {
+            pricingTable.setPricingComponent(landingPage.getPricingComponent());
+            // save pricing table
+            pricingTableRepository.save(pricingTable);
+        });
+        // save partner section
+        partnerClientSectionRepository.save(landingPage.getPartnerClientSection());
+        List<BrandLogo> brandLogoList = landingPage.getPartnerClientSection().getBrandLogoList();
+        brandLogoList.forEach(brandLogo -> {
+            brandLogo.setPartnerClientSection(landingPage.getPartnerClientSection());
+            // save brand logo
+            brandLogoRepository.save(brandLogo);
+        });
+        // save new letter
+        newsletterSectionRepository.save(landingPage.getNewsletterSection());
+        // save footer
+        footerSectionRepository.save(landingPage.getFooterSection());
+        // save searchBox
+        searchBoxRepository.save(landingPage.getSearchBox());
         // save landingPage
         return landingPageRepository.save(landingPage);
     }

@@ -18,9 +18,10 @@ public class LandingPageController {
     LandingPageService landingPageService;
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createLandingPageContent(@RequestBody LandingPage landingPage){
-        landingPageService.create(landingPage);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<LandingPage> createLandingPageContent(@RequestBody LandingPage landingPage){
+        return new ResponseEntity<>(
+                landingPageService.create(landingPage),
+                HttpStatus.OK);
     }
 
     @GetMapping("/getAll")
