@@ -16,6 +16,5 @@ public class RequirementSection {
     private String description;
 
     @ElementCollection
-    @JoinColumn(name = "")
     private List<String> requirementList;
 }
