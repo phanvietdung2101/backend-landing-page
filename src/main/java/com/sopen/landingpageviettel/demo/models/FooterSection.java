@@ -16,8 +16,6 @@ public class FooterSection {
 
     private String title;
 
-    @ElementCollection
-    private List<String> listText;
-
-    private String href;
+    @OneToMany(mappedBy = "footerSection")
+    private List<FooterLink> footerLinkList;
 }

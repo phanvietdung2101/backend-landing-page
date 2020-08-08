@@ -1,11 +1,9 @@
 package com.sopen.landingpageviettel.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,4 +14,10 @@ public class FeatureCarousel {
 
     private String title;
     private String description;
+    private String image_url;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "feature_carousel_section_id")
+    private FeatureCarouselSection featureCarouselSection;
 }

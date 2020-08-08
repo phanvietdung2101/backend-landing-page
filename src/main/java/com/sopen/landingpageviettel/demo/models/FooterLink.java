@@ -7,15 +7,16 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class AboutExpand {
+public class FooterLink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String icon;
+
     private String title;
+    private String href;
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "about_section_id")
-    private AboutSection aboutSection;
+    @JoinColumn(name = "footer_section_id")
+    private FooterSection footerSection;
 }

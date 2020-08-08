@@ -1,5 +1,6 @@
 package com.sopen.landingpageviettel.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,6 +25,11 @@ public class PricingTable {
     private Boolean isPopular;
 
     private Boolean active;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "pricing_component_id")
+    private PricingComponent pricingComponent;
 
     @ElementCollection
     private List<String> price;
