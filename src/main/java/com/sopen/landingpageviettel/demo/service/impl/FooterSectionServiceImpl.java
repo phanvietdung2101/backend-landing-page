@@ -5,6 +5,7 @@ import com.sopen.landingpageviettel.demo.models.FooterSection;
 import com.sopen.landingpageviettel.demo.repository.FooterLinkRepository;
 import com.sopen.landingpageviettel.demo.repository.FooterSectionRepository;
 import com.sopen.landingpageviettel.demo.service.FooterSectionService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +20,13 @@ public class FooterSectionServiceImpl implements FooterSectionService {
     FooterLinkRepository footerLinkRepository;
 
     @Override
-    public List<FooterSection> getAll() {
-        return footerSectionRepository.findAll();
+    public ServiceResult getLatest() {
+        FooterSection footerSection = footerSectionRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(footerSection,"ok");
     }
 
     @Override
-    public FooterSection getLatest() {
-        return footerSectionRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(FooterSection footerSection) {
+    public ServiceResult create(FooterSection footerSection) {
         footerSectionRepository.save(footerSection);
         List<FooterLink> footerLinkList = footerSection.getFooterLinkList();
         footerLinkList.forEach(footerLink -> {
@@ -37,5 +34,6 @@ public class FooterSectionServiceImpl implements FooterSectionService {
             // save footer link
             footerLinkRepository.save(footerLink);
         });
+        return new ServiceResult("ok");
     }
 }

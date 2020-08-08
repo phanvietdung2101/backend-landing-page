@@ -5,6 +5,7 @@ import com.sopen.landingpageviettel.demo.models.PricingTable;
 import com.sopen.landingpageviettel.demo.repository.PricingComponentRepository;
 import com.sopen.landingpageviettel.demo.repository.PricingTableRepository;
 import com.sopen.landingpageviettel.demo.service.PricingComponentService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +20,13 @@ public class PricingComponentServiceImpl implements PricingComponentService {
     PricingTableRepository pricingTableRepository;
 
     @Override
-    public List<PricingComponent> getAll() {
-        return pricingComponentRepository.findAll();
+    public ServiceResult getLatest() {
+        PricingComponent pricingComponent = pricingComponentRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(pricingComponent,"ok");
     }
 
     @Override
-    public PricingComponent getLatest() {
-        return pricingComponentRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(PricingComponent pricingComponent) {
+    public ServiceResult create(PricingComponent pricingComponent) {
         pricingComponentRepository.save(pricingComponent);
         List<PricingTable> pricingTableList = pricingComponent.getPricingTableList();
         pricingTableList.forEach(pricingTable -> {
@@ -37,5 +34,6 @@ public class PricingComponentServiceImpl implements PricingComponentService {
             // save pricing table
             pricingTableRepository.save(pricingTable);
         });
+        return new ServiceResult("ok");
     }
 }

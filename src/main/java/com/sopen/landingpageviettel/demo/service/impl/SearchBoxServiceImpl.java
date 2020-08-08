@@ -3,6 +3,7 @@ package com.sopen.landingpageviettel.demo.service.impl;
 import com.sopen.landingpageviettel.demo.models.SearchBox;
 import com.sopen.landingpageviettel.demo.repository.SearchBoxRepository;
 import com.sopen.landingpageviettel.demo.service.SearchBoxService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,14 @@ public class SearchBoxServiceImpl implements SearchBoxService {
     SearchBoxRepository searchBoxRepository;
 
     @Override
-    public List<SearchBox> getAll() {
-        return searchBoxRepository.findAll();
+    public ServiceResult getLatest() {
+        SearchBox searchBox = searchBoxRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(searchBox,"ok");
     }
 
     @Override
-    public SearchBox getLatest() {
-        return searchBoxRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(SearchBox searchBox) {
+    public ServiceResult create(SearchBox searchBox) {
         searchBoxRepository.save(searchBox);
+        return new ServiceResult("ok");
     }
 }

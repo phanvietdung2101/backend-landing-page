@@ -5,6 +5,7 @@ import com.sopen.landingpageviettel.demo.models.ProgressCircle;
 import com.sopen.landingpageviettel.demo.repository.FeatureProgressRepository;
 import com.sopen.landingpageviettel.demo.repository.ProgressCircleRepository;
 import com.sopen.landingpageviettel.demo.service.ProgressCircleService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +20,13 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
     FeatureProgressRepository featureProgressRepository;
 
     @Override
-    public List<ProgressCircle> getAll() {
-        return progressCircleRepository.findAll();
+    public ServiceResult getLatest() {
+        ProgressCircle progressCircle = progressCircleRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(progressCircle,"ok");
     }
 
     @Override
-    public ProgressCircle getLatest() {
-        return progressCircleRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(ProgressCircle progressCircle) {
+    public ServiceResult create(ProgressCircle progressCircle) {
         progressCircleRepository.save(progressCircle);
         List<FeatureProgress> featureProgressList = progressCircle.getFeatureProgressList();
         featureProgressList.forEach(featureProgress -> {
@@ -37,5 +34,6 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
             // save feature progress
             featureProgressRepository.save(featureProgress);
         });
+        return new ServiceResult("ok");
     }
 }

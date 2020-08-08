@@ -3,6 +3,7 @@ package com.sopen.landingpageviettel.demo.service.impl;
 import com.sopen.landingpageviettel.demo.models.RequirementSection;
 import com.sopen.landingpageviettel.demo.repository.RequirementSectionRepository;
 import com.sopen.landingpageviettel.demo.service.RequirementSectionService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,14 @@ public class RequirementSectionServiceImpl implements RequirementSectionService 
     RequirementSectionRepository requirementSectionRepository;
 
     @Override
-    public List<RequirementSection> getAll() {
-        return requirementSectionRepository.findAll();
+    public ServiceResult getLatest() {
+        RequirementSection requirementSection = requirementSectionRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(requirementSection,"ok");
     }
 
     @Override
-    public RequirementSection getLatest() {
-        return requirementSectionRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(RequirementSection requirementSection) {
+    public ServiceResult create(RequirementSection requirementSection) {
         requirementSectionRepository.save(requirementSection);
+        return new ServiceResult("ok");
     }
 }

@@ -5,6 +5,7 @@ import com.sopen.landingpageviettel.demo.models.BusinessSection;
 import com.sopen.landingpageviettel.demo.repository.BusinessFeatureRepository;
 import com.sopen.landingpageviettel.demo.repository.BusinessSectionRepository;
 import com.sopen.landingpageviettel.demo.service.BusinessSectionService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -18,17 +19,13 @@ public class BusinessSectionServiceImpl implements BusinessSectionService {
     BusinessFeatureRepository businessFeatureRepository;
 
     @Override
-    public List<BusinessSection> getAll() {
-        return businessSectionRepository.findAll();
+    public ServiceResult getLatest() {
+        BusinessSection businessSection = businessSectionRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(businessSection,"ok");
     }
 
     @Override
-    public BusinessSection getLatest() {
-        return businessSectionRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(BusinessSection businessSection) {
+    public ServiceResult create(BusinessSection businessSection) {
         businessSectionRepository.save(businessSection);
         // save business feature list
         List<BusinessFeature> businessFeatureList = businessSection.getBusinessFeatureList();
@@ -37,5 +34,6 @@ public class BusinessSectionServiceImpl implements BusinessSectionService {
             // save business feature
             businessFeatureRepository.save(businessFeature);
         });
+        return new ServiceResult("ok");
     }
 }

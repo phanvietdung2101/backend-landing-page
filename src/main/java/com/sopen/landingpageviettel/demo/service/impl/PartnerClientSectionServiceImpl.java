@@ -5,6 +5,7 @@ import com.sopen.landingpageviettel.demo.models.PartnerClientSection;
 import com.sopen.landingpageviettel.demo.repository.BrandLogoRepository;
 import com.sopen.landingpageviettel.demo.repository.PartnerClientSectionRepository;
 import com.sopen.landingpageviettel.demo.service.PartnerClientSectionService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +20,13 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
     BrandLogoRepository brandLogoRepository;
 
     @Override
-    public List<PartnerClientSection> getAll() {
-        return partnerClientSectionRepository.findAll();
+    public ServiceResult getLatest() {
+        PartnerClientSection partnerClientSection = partnerClientSectionRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(partnerClientSection,"ok");
     }
 
     @Override
-    public PartnerClientSection getLatest() {
-        return partnerClientSectionRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(PartnerClientSection partnerClientSection) {
+    public ServiceResult create(PartnerClientSection partnerClientSection) {
         partnerClientSectionRepository.save(partnerClientSection);
         List<BrandLogo> brandLogoList = partnerClientSection.getBrandLogoList();
         brandLogoList.forEach(brandLogo -> {
@@ -37,5 +34,6 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
             // save brand logo
             brandLogoRepository.save(brandLogo);
         });
+        return new ServiceResult("ok");
     }
 }

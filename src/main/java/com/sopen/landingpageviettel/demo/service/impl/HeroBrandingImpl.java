@@ -3,6 +3,7 @@ package com.sopen.landingpageviettel.demo.service.impl;
 import com.sopen.landingpageviettel.demo.models.HeroBranding;
 import com.sopen.landingpageviettel.demo.repository.HeroBrandingRepository;
 import com.sopen.landingpageviettel.demo.service.HeroBrandingService;
+import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,14 @@ public class HeroBrandingImpl implements HeroBrandingService {
     HeroBrandingRepository heroBrandingRepository;
 
     @Override
-    public List<HeroBranding> getAll() {
-        return heroBrandingRepository.findAll();
+    public ServiceResult getLatest() {
+        HeroBranding heroBranding = heroBrandingRepository.findTopByOrderByIdDesc();
+        return new ServiceResult(heroBranding,"ok");
     }
 
     @Override
-    public HeroBranding getLatest() {
-        return heroBrandingRepository.findTopByOrderByIdDesc();
-    }
-
-    @Override
-    public void create(HeroBranding heroBranding) {
+    public ServiceResult create(HeroBranding heroBranding) {
         heroBrandingRepository.save(heroBranding);
+        return new ServiceResult("ok");
     }
 }
