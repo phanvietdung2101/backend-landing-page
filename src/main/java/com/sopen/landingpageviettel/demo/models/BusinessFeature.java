@@ -4,19 +4,16 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
+
 @Entity
-public class LandingPage {
+@Data
+@Table(name = "`business_feature`")
+public class BusinessFeature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Navbar navbar;
-
-    @ManyToOne
-    private HeroBranding heroBranding;
-
-
-
+    private String icon;
+    private String title;
+    private String description;
 }

@@ -3,20 +3,18 @@ package com.sopen.landingpageviettel.demo.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
-public class LandingPage {
+public class RequirementSection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Navbar navbar;
+    private String title;
+    private String description;
 
-    @ManyToOne
-    private HeroBranding heroBranding;
-
-
-
+    @ElementCollection
+    private List<String> requirementList;
 }

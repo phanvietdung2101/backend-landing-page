@@ -3,20 +3,15 @@ package com.sopen.landingpageviettel.demo.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Data
 @Entity
-public class LandingPage {
+@Data
+public class ProgressCircle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Navbar navbar;
-
-    @ManyToOne
-    private HeroBranding heroBranding;
-
-
-
+    @OneToMany
+    private List<FeatureProgress> featureProgressList;
 }

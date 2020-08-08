@@ -9,14 +9,11 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class HeroBranding {
+public class FeatureCarousel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
     private String description;
-    private String button_title;
-    private String button_href;
-    private String background_img;
 }
