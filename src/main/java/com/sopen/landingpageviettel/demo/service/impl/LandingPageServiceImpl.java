@@ -71,10 +71,9 @@ public class LandingPageServiceImpl implements LandingPageService {
     SearchBoxRepository searchBoxRepository;
 
     @Override
-    public List<LandingPage> findAll() {
+    public List<LandingPage> getAll() {
         return (List<LandingPage>) landingPageRepository.findAll();
     }
-
 
     @Override
     public LandingPage create(LandingPage landingPage) {
