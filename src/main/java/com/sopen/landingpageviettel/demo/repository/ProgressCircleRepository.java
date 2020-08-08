@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProgressCircleRepository extends JpaRepository<ProgressCircle, Long> {
+    ProgressCircle findTopByOrderByIdDesc();
 }

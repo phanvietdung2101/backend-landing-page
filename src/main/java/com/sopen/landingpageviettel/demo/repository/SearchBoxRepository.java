@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SearchBoxRepository extends JpaRepository<SearchBox, Long> {
+    SearchBox findTopByOrderByIdDesc();
 }

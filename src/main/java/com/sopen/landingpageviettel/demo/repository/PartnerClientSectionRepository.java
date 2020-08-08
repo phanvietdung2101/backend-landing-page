@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PartnerClientSectionRepository extends JpaRepository<PartnerClientSection, Long> {
+    PartnerClientSection findTopByOrderByIdDesc();
 }

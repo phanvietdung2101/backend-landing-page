@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FooterSectionRepository extends JpaRepository<FooterSection, Long> {
+    FooterSection findTopByOrderByIdDesc();
 }

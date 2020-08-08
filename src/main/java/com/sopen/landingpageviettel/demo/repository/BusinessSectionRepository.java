@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BusinessSectionRepository extends JpaRepository<BusinessSection, Long> {
+    BusinessSection findTopByOrderByIdDesc();
 }

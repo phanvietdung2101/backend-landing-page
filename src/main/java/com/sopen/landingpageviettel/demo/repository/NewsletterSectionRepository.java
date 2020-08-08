@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NewsletterSectionRepository extends JpaRepository<NewsletterSection, Long> {
+    NewsletterSection findTopByOrderByIdDesc();
 }

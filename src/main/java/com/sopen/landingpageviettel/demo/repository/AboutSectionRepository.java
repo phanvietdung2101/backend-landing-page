@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AboutSectionRepository extends JpaRepository<AboutSection, Long> {
+    AboutSection findTopByOrderByIdDesc();
 }

@@ -7,5 +7,5 @@ import java.util.List;
 public interface GeneralService<E> {
     List<E> getAll();
     E getLatest();
-
+    void create(E e);
 }

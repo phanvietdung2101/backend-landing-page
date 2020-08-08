@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PricingComponentRepository extends JpaRepository<PricingComponent, Long> {
+    PricingComponent findTopByOrderByIdDesc();
 }
