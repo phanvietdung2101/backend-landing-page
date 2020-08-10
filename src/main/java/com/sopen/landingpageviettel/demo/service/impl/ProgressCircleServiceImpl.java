@@ -27,13 +27,13 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
 
     @Override
     public ServiceResult create(ProgressCircle progressCircle) {
-        progressCircleRepository.save(progressCircle);
+        progressCircle = progressCircleRepository.save(progressCircle);
         List<FeatureProgress> featureProgressList = progressCircle.getFeatureProgressList();
-        featureProgressList.forEach(featureProgress -> {
+        for (FeatureProgress featureProgress : featureProgressList) {
             featureProgress.setProgressCircle(progressCircle);
             // save feature progress
             featureProgressRepository.save(featureProgress);
-        });
-        return new ServiceResult("ok");
+        }
+        return new ServiceResult(progressCircle,"ok");
     }
 }

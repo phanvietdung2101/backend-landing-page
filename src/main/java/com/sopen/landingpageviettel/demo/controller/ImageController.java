@@ -19,7 +19,7 @@ public class ImageController {
         return imageServiceImpl.storeFile(file);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/get-image/{id}")
     public ServiceResult getImage(@PathVariable Long id) {
         return imageServiceImpl.getFile(id);
     }

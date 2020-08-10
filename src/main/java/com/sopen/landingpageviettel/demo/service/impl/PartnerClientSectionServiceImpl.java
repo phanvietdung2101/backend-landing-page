@@ -27,13 +27,13 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
 
     @Override
     public ServiceResult create(PartnerClientSection partnerClientSection) {
-        partnerClientSectionRepository.save(partnerClientSection);
+        partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);
         List<BrandLogo> brandLogoList = partnerClientSection.getBrandLogoList();
-        brandLogoList.forEach(brandLogo -> {
+        for (BrandLogo brandLogo : brandLogoList) {
             brandLogo.setPartnerClientSection(partnerClientSection);
             // save brand logo
             brandLogoRepository.save(brandLogo);
-        });
-        return new ServiceResult("ok");
+        }
+        return new ServiceResult(partnerClientSection,"ok");
     }
 }

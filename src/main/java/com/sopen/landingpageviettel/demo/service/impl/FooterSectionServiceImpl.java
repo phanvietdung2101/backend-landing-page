@@ -27,13 +27,13 @@ public class FooterSectionServiceImpl implements FooterSectionService {
 
     @Override
     public ServiceResult create(FooterSection footerSection) {
-        footerSectionRepository.save(footerSection);
+        footerSection = footerSectionRepository.save(footerSection);
         List<FooterLink> footerLinkList = footerSection.getFooterLinkList();
-        footerLinkList.forEach(footerLink -> {
+        for (FooterLink footerLink : footerLinkList) {
             footerLink.setFooterSection(footerSection);
             // save footer link
             footerLinkRepository.save(footerLink);
-        });
-        return new ServiceResult("ok");
+        }
+        return new ServiceResult(footerSection,"ok");
     }
 }

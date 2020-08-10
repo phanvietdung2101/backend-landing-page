@@ -28,14 +28,14 @@ public class AboutSectionServiceImpl implements AboutSectionService {
 
     @Override
     public ServiceResult create(AboutSection aboutSection) {
-        aboutSectionRepository.save(aboutSection);
+        aboutSection = aboutSectionRepository.save(aboutSection);
         // set aboutSection for aboutExpand list
         List<AboutExpand> aboutExpandList = aboutSection.getAboutExpandList();
-        aboutExpandList.forEach(aboutExpand -> {
+        for (AboutExpand aboutExpand : aboutExpandList) {
             aboutExpand.setAboutSection(aboutSection);
             // save aboutExpand
             aboutExpandRepository.save(aboutExpand);
-        });
-        return new ServiceResult("ok");
+        }
+        return new ServiceResult(aboutSection,"ok");
     }
 }

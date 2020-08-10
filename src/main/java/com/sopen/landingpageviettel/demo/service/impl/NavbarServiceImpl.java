@@ -21,7 +21,7 @@ public class NavbarServiceImpl implements NavbarService {
 
     @Override
     public ServiceResult create(Navbar navbar) {
-        navbarRepository.save(navbar);
-        return new ServiceResult("ok");
+        navbar = navbarRepository.save(navbar);
+        return new ServiceResult(navbar,"ok");
     }
 }

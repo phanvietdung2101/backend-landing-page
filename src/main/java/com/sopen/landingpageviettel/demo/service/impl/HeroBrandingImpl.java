@@ -22,7 +22,7 @@ public class HeroBrandingImpl implements HeroBrandingService {
 
     @Override
     public ServiceResult create(HeroBranding heroBranding) {
-        heroBrandingRepository.save(heroBranding);
-        return new ServiceResult("ok");
+        heroBranding = heroBrandingRepository.save(heroBranding);
+        return new ServiceResult(heroBranding,"ok");
     }
 }

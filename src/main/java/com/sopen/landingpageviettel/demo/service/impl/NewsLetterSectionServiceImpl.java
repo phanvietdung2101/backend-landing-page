@@ -22,7 +22,7 @@ public class NewsLetterSectionServiceImpl implements NewsLetterSectionService {
 
     @Override
     public ServiceResult create(NewsletterSection newsletterSection) {
-        newsletterSectionRepository.save(newsletterSection);
-        return new ServiceResult("ok");
+        newsletterSection = newsletterSectionRepository.save(newsletterSection);
+        return new ServiceResult(newsletterSection,"ok");
     }
 }
