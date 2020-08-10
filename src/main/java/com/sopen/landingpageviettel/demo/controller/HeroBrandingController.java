@@ -21,7 +21,7 @@ public class HeroBrandingController extends GeneralController<HeroBranding> {
 
     @PostMapping("create")
     @Override
-    public ServiceResult create(HeroBranding heroBranding) {
+    public ServiceResult create(@RequestBody HeroBranding heroBranding) {
         return heroBrandingService.create(heroBranding);
     }
 }

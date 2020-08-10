@@ -21,7 +21,7 @@ public class PartnerClientSectionController extends GeneralController<PartnerCli
 
     @PostMapping("create")
     @Override
-    public ServiceResult create(PartnerClientSection partnerClientSection) {
+    public ServiceResult create(@RequestBody PartnerClientSection partnerClientSection) {
         return partnerClientSectionService.create(partnerClientSection);
     }
 }

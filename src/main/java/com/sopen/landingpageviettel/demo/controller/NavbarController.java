@@ -21,7 +21,7 @@ public class NavbarController extends GeneralController<Navbar>{
 
     @PostMapping("create")
     @Override
-    public ServiceResult create(Navbar navbar) {
+    public ServiceResult create(@RequestBody Navbar navbar) {
         return navbarService.create(navbar);
     }
 }

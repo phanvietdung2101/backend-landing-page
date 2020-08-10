@@ -21,7 +21,7 @@ public class NewsletterSectionController extends GeneralController<NewsletterSec
 
     @PostMapping("create")
     @Override
-    public ServiceResult create(NewsletterSection newsletterSection) {
+    public ServiceResult create(@RequestBody NewsletterSection newsletterSection) {
         return newsLetterSectionService.create(newsletterSection);
     }
 }

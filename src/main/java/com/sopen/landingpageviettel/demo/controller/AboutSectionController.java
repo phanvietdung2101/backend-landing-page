@@ -21,7 +21,7 @@ public class AboutSectionController extends GeneralController<AboutSection> {
 
     @PostMapping("create")
     @Override
-    public ServiceResult create(AboutSection aboutSection) {
+    public ServiceResult create(@RequestBody AboutSection aboutSection) {
         return aboutSectionService.create(aboutSection);
     }
 }

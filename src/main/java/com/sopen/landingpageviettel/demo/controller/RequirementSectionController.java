@@ -21,7 +21,7 @@ public class RequirementSectionController extends GeneralController<RequirementS
 
     @PostMapping("create")
     @Override
-    public ServiceResult create(RequirementSection requirementSection) {
+    public ServiceResult create(@RequestBody RequirementSection requirementSection) {
         return requirementSectionService.create(requirementSection);
     }
 }
