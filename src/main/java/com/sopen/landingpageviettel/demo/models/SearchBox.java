@@ -14,7 +14,6 @@ public class SearchBox {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String logoSrc;
-
-    private String logoHref;
+    private String logo_src;
+    private String search_placeholder;
 }

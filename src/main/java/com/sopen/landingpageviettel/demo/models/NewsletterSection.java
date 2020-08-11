@@ -17,11 +17,13 @@ public class NewsletterSection {
 
     private String title;
 
-    private String buttonTitle;
+    private String button_title;
 
-    private String text;
+    private String button_href;
 
-    private String textTitle;
+    private String description;
 
-    private String textHref;
+    private String description_button_title;
+
+    private String description_button_href;
 }
