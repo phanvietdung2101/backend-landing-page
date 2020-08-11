@@ -13,7 +13,7 @@ public class FeatureProgress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String progress;
+    private Long progress;
 
     private String featureListTitle;
 
