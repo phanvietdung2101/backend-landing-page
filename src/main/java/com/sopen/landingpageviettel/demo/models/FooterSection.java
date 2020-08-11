@@ -12,7 +12,7 @@ public class FooterSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String logoSrc;
+    private String logo_src;
 
     private String title;
 
