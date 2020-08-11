@@ -14,6 +14,7 @@ public class PricingTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "text")
     private String thumb;
 
     private String title;
