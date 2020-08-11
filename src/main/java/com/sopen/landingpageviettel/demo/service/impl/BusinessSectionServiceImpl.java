@@ -25,7 +25,7 @@ public class BusinessSectionServiceImpl implements BusinessSectionService {
     }
 
     @Override
-    public ServiceResult create(BusinessSection businessSection) {
+    public ServiceResult save(BusinessSection businessSection) {
         businessSection = businessSectionRepository.save(businessSection);
         // save business feature list
         List<BusinessFeature> businessFeatureList = businessSection.getBusinessFeatureList();

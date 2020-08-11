@@ -26,7 +26,7 @@ public class PricingComponentServiceImpl implements PricingComponentService {
     }
 
     @Override
-    public ServiceResult create(PricingComponent pricingComponent) {
+    public ServiceResult save(PricingComponent pricingComponent) {
         pricingComponent = pricingComponentRepository.save(pricingComponent);
         List<PricingTable> pricingTableList = pricingComponent.getPricingTableList();
         for (PricingTable pricingTable : pricingTableList) {

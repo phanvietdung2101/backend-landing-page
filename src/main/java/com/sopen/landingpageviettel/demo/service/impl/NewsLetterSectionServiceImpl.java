@@ -21,7 +21,7 @@ public class NewsLetterSectionServiceImpl implements NewsLetterSectionService {
     }
 
     @Override
-    public ServiceResult create(NewsletterSection newsletterSection) {
+    public ServiceResult save(NewsletterSection newsletterSection) {
         newsletterSection = newsletterSectionRepository.save(newsletterSection);
         return new ServiceResult(newsletterSection,"ok");
     }

@@ -21,7 +21,7 @@ public class SearchBoxServiceImpl implements SearchBoxService {
     }
 
     @Override
-    public ServiceResult create(SearchBox searchBox) {
+    public ServiceResult save(SearchBox searchBox) {
         searchBox = searchBoxRepository.save(searchBox);
         return new ServiceResult(searchBox,"ok");
     }

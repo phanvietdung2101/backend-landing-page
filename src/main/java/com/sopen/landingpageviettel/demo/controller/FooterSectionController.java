@@ -22,6 +22,6 @@ public class FooterSectionController extends GeneralController<FooterSection> {
     @PostMapping("create")
     @Override
     public ServiceResult create(@RequestBody FooterSection footerSection) {
-        return footerSectionService.create(footerSection);
+        return footerSectionService.save(footerSection);
     }
 }

@@ -26,7 +26,7 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
     }
 
     @Override
-    public ServiceResult create(PartnerClientSection partnerClientSection) {
+    public ServiceResult save(PartnerClientSection partnerClientSection) {
         partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);
         List<BrandLogo> brandLogoList = partnerClientSection.getBrandLogoList();
         for (BrandLogo brandLogo : brandLogoList) {

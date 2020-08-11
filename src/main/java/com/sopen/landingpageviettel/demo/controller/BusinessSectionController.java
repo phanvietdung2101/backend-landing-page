@@ -22,6 +22,6 @@ public class BusinessSectionController extends GeneralController<BusinessSection
     @PostMapping("create")
     @Override
     public ServiceResult create(@RequestBody BusinessSection businessSection) {
-        return businessSectionService.create(businessSection);
+        return businessSectionService.save(businessSection);
     }
 }

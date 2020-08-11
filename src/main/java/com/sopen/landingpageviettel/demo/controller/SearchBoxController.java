@@ -22,6 +22,6 @@ public class SearchBoxController extends GeneralController<SearchBox> {
     @PostMapping("create")
     @Override
     public ServiceResult create(@RequestBody SearchBox searchBox) {
-        return searchBoxService.create(searchBox);
+        return searchBoxService.save(searchBox);
     }
 }

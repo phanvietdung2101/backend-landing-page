@@ -22,6 +22,6 @@ public class PricingComponentController extends GeneralController<PricingCompone
     @PostMapping("create")
     @Override
     public ServiceResult create(@RequestBody PricingComponent pricingComponent) {
-        return pricingComponentService.create(pricingComponent);
+        return pricingComponentService.save(pricingComponent);
     }
 }

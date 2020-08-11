@@ -27,7 +27,7 @@ public class AboutSectionServiceImpl implements AboutSectionService {
     }
 
     @Override
-    public ServiceResult create(AboutSection aboutSection) {
+    public ServiceResult save(AboutSection aboutSection) {
         aboutSection = aboutSectionRepository.save(aboutSection);
         // set aboutSection for aboutExpand list
         List<AboutExpand> aboutExpandList = aboutSection.getAboutExpandList();

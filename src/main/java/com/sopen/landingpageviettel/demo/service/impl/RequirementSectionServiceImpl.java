@@ -21,7 +21,7 @@ public class RequirementSectionServiceImpl implements RequirementSectionService 
     }
 
     @Override
-    public ServiceResult create(RequirementSection requirementSection) {
+    public ServiceResult save(RequirementSection requirementSection) {
         requirementSection = requirementSectionRepository.save(requirementSection);
         return new ServiceResult(requirementSection,"ok");
     }

@@ -22,6 +22,6 @@ public class ProgressCircleController extends GeneralController<ProgressCircle> 
     @PostMapping("create")
     @Override
     public ServiceResult create(@RequestBody ProgressCircle progressCircle) {
-        return progressCircleService.create(progressCircle);
+        return progressCircleService.save(progressCircle);
     }
 }
