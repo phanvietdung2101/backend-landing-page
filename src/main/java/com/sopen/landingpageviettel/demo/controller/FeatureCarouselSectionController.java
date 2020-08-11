@@ -21,7 +21,7 @@ public class FeatureCarouselSectionController extends GeneralController<FeatureC
 
     @PostMapping("create")
     @Override
-    public ServiceResult create(FeatureCarouselSection featureCarouselSection) {
+    public ServiceResult create(@RequestBody FeatureCarouselSection featureCarouselSection) {
         return featureCarouselSectionService.save(featureCarouselSection);
     }
 }
