@@ -1,6 +1,5 @@
 package com.sopen.landingpageviettel.demo.service.impl;
 
-import com.sopen.landingpageviettel.demo.models.BrandLogo;
 import com.sopen.landingpageviettel.demo.models.FeatureProgress;
 import com.sopen.landingpageviettel.demo.models.ProgressCircle;
 import com.sopen.landingpageviettel.demo.repository.FeatureProgressRepository;
@@ -26,17 +25,17 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
     @Override
     public ServiceResult getLatest() {
         ProgressCircle progressCircle = progressCircleRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(progressCircle,"ok");
+        return new ServiceResult(progressCircle, "ok");
     }
 
     @Override
     public ServiceResult save(ProgressCircle progressCircle) {
         try {
             progressCircle = saveProgressCircleTransaction(progressCircle);
-        } catch (ConstraintViolationException e){
-            return new ServiceResult(e.getCause(),"object field must be not null or empty");
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
         }
-        return new ServiceResult(progressCircle,"ok");
+        return new ServiceResult(progressCircle, "ok");
     }
 
     @Transactional(

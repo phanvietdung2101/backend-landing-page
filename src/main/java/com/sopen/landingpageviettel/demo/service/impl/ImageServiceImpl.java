@@ -28,6 +28,6 @@ public class ImageServiceImpl implements ImageService {
     public ServiceResult getFile(Long fileId) {
         Image image = imageRepository.findById(fileId)
                 .orElseThrow(() -> new RuntimeException("File not found with id " + fileId));
-        return new ServiceResult(image,"ok");
+        return new ServiceResult(image, "ok");
     }
 }

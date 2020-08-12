@@ -18,16 +18,16 @@ public class NavbarServiceImpl implements NavbarService {
     @Override
     public ServiceResult getLatest() {
         Navbar navbar = navbarRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(navbar,"ok");
+        return new ServiceResult(navbar, "ok");
     }
 
     @Override
     public ServiceResult save(Navbar navbar) {
         try {
             navbar = navbarRepository.save(navbar);
-        } catch (ConstraintViolationException e){
-            return new ServiceResult(e.getCause(),"object field must be not null or empty");
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
         }
-        return new ServiceResult(navbar,"ok");
+        return new ServiceResult(navbar, "ok");
     }
 }

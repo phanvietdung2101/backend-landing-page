@@ -1,6 +1,5 @@
 package com.sopen.landingpageviettel.demo.service.impl;
 
-import com.sopen.landingpageviettel.demo.models.BrandLogo;
 import com.sopen.landingpageviettel.demo.models.PricingComponent;
 import com.sopen.landingpageviettel.demo.models.PricingTable;
 import com.sopen.landingpageviettel.demo.repository.PricingComponentRepository;
@@ -26,24 +25,24 @@ public class PricingComponentServiceImpl implements PricingComponentService {
     @Override
     public ServiceResult getLatest() {
         PricingComponent pricingComponent = pricingComponentRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(pricingComponent,"ok");
+        return new ServiceResult(pricingComponent, "ok");
     }
 
     @Override
     public ServiceResult save(PricingComponent pricingComponent) {
         try {
             pricingComponent = savePricingComponentTransaction(pricingComponent);
-        } catch (ConstraintViolationException e){
-            return new ServiceResult(e.getCause(),"object field must be not null or empty");
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
         }
-        return new ServiceResult(pricingComponent,"ok");
+        return new ServiceResult(pricingComponent, "ok");
     }
 
     @Transactional(
             propagation = Propagation.REQUIRES_NEW
             , rollbackFor = ConstraintViolationException.class
     )
-    public PricingComponent savePricingComponentTransaction(PricingComponent pricingComponent){
+    public PricingComponent savePricingComponentTransaction(PricingComponent pricingComponent) {
         pricingComponent = pricingComponentRepository.save(pricingComponent);
         List<PricingTable> pricingTableList = pricingComponent.getPricingTableList();
         for (PricingTable pricingTable : pricingTableList) {

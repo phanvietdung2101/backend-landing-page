@@ -1,14 +1,12 @@
 package com.sopen.landingpageviettel.demo.models;
 
 import lombok.Data;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Data

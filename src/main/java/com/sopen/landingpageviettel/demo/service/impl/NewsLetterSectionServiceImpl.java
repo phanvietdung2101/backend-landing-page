@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolationException;
-import java.util.List;
 
 @Service
 public class NewsLetterSectionServiceImpl implements NewsLetterSectionService {
@@ -18,17 +17,17 @@ public class NewsLetterSectionServiceImpl implements NewsLetterSectionService {
     @Override
     public ServiceResult getLatest() {
         NewsletterSection newsletterSection = newsletterSectionRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(newsletterSection,"ok");
+        return new ServiceResult(newsletterSection, "ok");
     }
 
     @Override
     public ServiceResult save(NewsletterSection newsletterSection) {
         try {
             newsletterSection = newsletterSectionRepository.save(newsletterSection);
-        } catch (ConstraintViolationException e){
-            return new ServiceResult(e.getCause(),"object field must be not null or empty");
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
         }
 
-        return new ServiceResult(newsletterSection,"ok");
+        return new ServiceResult(newsletterSection, "ok");
     }
 }
