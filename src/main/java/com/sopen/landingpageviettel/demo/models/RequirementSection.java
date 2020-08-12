@@ -23,6 +23,12 @@ public class RequirementSection {
     private String image_url;
 
     @NotEmpty
+    private String button_title;
+
+    @NotEmpty
+    private String button_href;
+
+    @NotEmpty
     @ElementCollection
     private List<String> requirementList;
 }

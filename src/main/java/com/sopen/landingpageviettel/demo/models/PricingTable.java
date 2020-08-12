@@ -28,6 +28,9 @@ public class PricingTable {
     @NotEmpty
     private String alt;
 
+    @NotEmpty
+    private String duration;
+
     private Boolean isPopular;
 
     private Boolean active;

@@ -20,6 +20,9 @@ public class AboutExpand {
     @NotEmpty
     private String title;
 
+    @NotEmpty
+    private String href;
+
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "about_section_id")
