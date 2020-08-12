@@ -3,6 +3,8 @@ package com.sopen.landingpageviettel.demo.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -12,6 +14,7 @@ public class FeatureCarouselSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     @OneToMany(mappedBy = "featureCarouselSection")
     private List<FeatureCarousel> featureCarouselList;
 }

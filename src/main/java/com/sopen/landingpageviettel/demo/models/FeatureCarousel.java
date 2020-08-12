@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @Entity
@@ -12,8 +13,13 @@ public class FeatureCarousel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String title;
+
+    @NotEmpty
     private String description;
+
+    @NotEmpty
     private String image_url;
 
     @ManyToOne

@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.swing.text.StyledEditorKit;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -14,13 +15,17 @@ public class PricingTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     @Column(columnDefinition = "text")
     private String thumb;
 
+    @NotEmpty
     private String title;
 
+    @NotEmpty
     private String value;
 
+    @NotEmpty
     private String alt;
 
     private Boolean isPopular;
@@ -32,6 +37,7 @@ public class PricingTable {
     @JoinColumn(name = "pricing_component_id")
     private PricingComponent pricingComponent;
 
+    @NotEmpty
     @ElementCollection
     private List<String> price;
 }
