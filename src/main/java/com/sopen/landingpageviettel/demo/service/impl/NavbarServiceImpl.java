@@ -7,6 +7,8 @@ import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ConstraintViolationException;
+
 
 @Service
 public class NavbarServiceImpl implements NavbarService {
@@ -21,7 +23,11 @@ public class NavbarServiceImpl implements NavbarService {
 
     @Override
     public ServiceResult save(Navbar navbar) {
-        navbar = navbarRepository.save(navbar);
+        try {
+            navbar = navbarRepository.save(navbar);
+        } catch (ConstraintViolationException e){
+            return new ServiceResult(e.getCause(),"object field must be not null or empty");
+        }
         return new ServiceResult(navbar,"ok");
     }
 }

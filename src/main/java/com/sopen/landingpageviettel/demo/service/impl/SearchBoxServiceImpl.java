@@ -7,6 +7,7 @@ import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -22,7 +23,11 @@ public class SearchBoxServiceImpl implements SearchBoxService {
 
     @Override
     public ServiceResult save(SearchBox searchBox) {
-        searchBox = searchBoxRepository.save(searchBox);
+        try {
+            searchBox = searchBoxRepository.save(searchBox);
+        } catch (ConstraintViolationException e){
+            return new ServiceResult(e.getCause(),"object field must be not null or empty");
+        }
         return new ServiceResult(searchBox,"ok");
     }
 }

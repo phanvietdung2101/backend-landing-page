@@ -7,6 +7,7 @@ import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -22,7 +23,11 @@ public class HeroBrandingImpl implements HeroBrandingService {
 
     @Override
     public ServiceResult save(HeroBranding heroBranding) {
-        heroBranding = heroBrandingRepository.save(heroBranding);
+        try {
+            heroBranding = heroBrandingRepository.save(heroBranding);
+        } catch (ConstraintViolationException e){
+            return new ServiceResult(e.getCause(),"object field must be not null or empty");
+        }
         return new ServiceResult(heroBranding,"ok");
     }
 }
