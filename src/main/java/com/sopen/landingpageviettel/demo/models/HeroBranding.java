@@ -2,11 +2,9 @@ package com.sopen.landingpageviettel.demo.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -27,6 +25,7 @@ public class HeroBranding {
     @NotEmpty
     private String button_href;
 
-    @NotEmpty
-    private String background_img;
+    @NotNull
+    @ManyToOne
+    private Image background_img;
 }
