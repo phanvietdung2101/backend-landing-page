@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -19,8 +20,9 @@ public class FeatureCarousel {
     @NotEmpty
     private String description;
 
-    @NotEmpty
-    private String image_url;
+    @NotNull
+    @ManyToOne
+    private Image image_url;
 
     @ManyToOne
     @JsonIgnore
