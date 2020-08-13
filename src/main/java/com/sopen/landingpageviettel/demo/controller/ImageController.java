@@ -1,6 +1,5 @@
 package com.sopen.landingpageviettel.demo.controller;
 
-import com.sopen.landingpageviettel.demo.models.Image;
 import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import com.sopen.landingpageviettel.demo.service.impl.ImageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ImageController {
         return imageServiceImpl.storeFile(file);
     }
 
-    @GetMapping("/get-image/{id}")
+    @GetMapping("/{id}")
     public ServiceResult getImage(@PathVariable Long id) {
         return imageServiceImpl.getFile(id);
     }

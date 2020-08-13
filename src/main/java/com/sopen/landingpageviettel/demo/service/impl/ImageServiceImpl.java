@@ -19,9 +19,11 @@ public class ImageServiceImpl implements ImageService {
     public ServiceResult storeFile(MultipartFile file) throws IOException {
         Image image = new Image();
         image.setData(file.getBytes());
-
-        imageRepository.save(image);
-        return new ServiceResult("ok");
+        image.setName(file.getOriginalFilename());
+        image = imageRepository.save(image);
+        // return image with only id
+        image.setData(null);
+        return new ServiceResult(image,"ok");
     }
 
     @Override
