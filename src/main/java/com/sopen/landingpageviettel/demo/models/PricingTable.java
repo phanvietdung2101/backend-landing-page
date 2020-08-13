@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -14,9 +15,9 @@ public class PricingTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
-    @Column(columnDefinition = "text")
-    private String thumb;
+    @NotNull
+    @ManyToOne
+    private Image thumb;
 
     @NotEmpty
     private String title;
