@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -13,11 +14,13 @@ public class BrandLogo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
-    private String logo;
+    @NotNull
+    @ManyToOne
+    private Image logo;
 
-    @NotEmpty
-    private String logoHover;
+    @NotNull
+    @ManyToOne
+    private Image logoHover;
 
     @NotEmpty
     private String alt;
