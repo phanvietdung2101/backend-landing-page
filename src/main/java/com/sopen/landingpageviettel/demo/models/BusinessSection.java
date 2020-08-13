@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -22,8 +23,9 @@ public class BusinessSection {
     @NotEmpty
     private String video_title;
 
-    @NotEmpty
-    private String image_url;
+    @NotNull
+    @ManyToOne
+    private Image image_url;
 
     @NotEmpty
     @OneToMany(mappedBy = "businessSection")
