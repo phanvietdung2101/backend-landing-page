@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -13,8 +14,9 @@ public class AboutExpand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
-    private String icon;
+    @NotNull
+    @ManyToOne
+    private Image icon;
 
     @NotEmpty
     private String title;
