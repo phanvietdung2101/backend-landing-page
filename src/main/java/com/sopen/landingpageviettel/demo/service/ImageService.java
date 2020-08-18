@@ -9,4 +9,5 @@ public interface ImageService {
     ServiceResult storeFile(MultipartFile file) throws IOException;
     ServiceResult getFile(Long fileId);
     ServiceResult storeMultiFile(MultipartFile[] files) throws IOException;
+    byte[] getImage(Long fileId);
 }

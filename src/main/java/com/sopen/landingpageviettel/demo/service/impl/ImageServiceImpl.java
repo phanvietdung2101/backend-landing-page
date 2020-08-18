@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -40,6 +41,16 @@ public class ImageServiceImpl implements ImageService {
         List<Image> imageList = getImageList(files);
         imageRepository.saveAll(imageList);
         return new ServiceResult(getResponseImageList(imageList), "ok");
+    }
+
+    @Override
+    public byte[] getImage(Long fileId) {
+        Optional<Image> image = imageRepository.findById(fileId);
+        if(image.isPresent()){
+            return image.get().getData();
+        } else {
+            throw new RuntimeException("Not found file");
+        }
     }
 
     public List<Image> getImageList(MultipartFile[] files) throws IOException {

@@ -3,12 +3,16 @@ package com.sopen.landingpageviettel.demo.controller;
 import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import com.sopen.landingpageviettel.demo.service.impl.ImageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import sun.misc.BASE64Decoder;
 
 import java.io.IOException;
+import java.util.Base64;
 
 @RestController
 @CrossOrigin("*")
@@ -35,8 +39,22 @@ public class ImageController {
         }
     }
 
+//    @GetMapping("/{id}")
+//    public ServiceResult getImage(@PathVariable Long id) {
+//        return imageServiceImpl.getFile(id);
+//    }
+
     @GetMapping("/{id}")
-    public ServiceResult getImage(@PathVariable Long id) {
-        return imageServiceImpl.getFile(id);
+    public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
+        try {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.setContentType(MediaType.IMAGE_JPEG);
+            byte[] response = imageServiceImpl.getImage(id);
+            return ResponseEntity.ok().headers(httpHeaders).body(response);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
+
 }
