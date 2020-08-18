@@ -15,6 +15,8 @@ public class Image {
 
     private String name;
 
+    private String url;
+
     @Lob
     private byte[] data;
 }

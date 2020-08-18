@@ -22,7 +22,7 @@ public class FeatureCarousel {
 
     @NotNull
     @ManyToOne
-    private Image image_url;
+    private Image image;
 
     @ManyToOne
     @JsonIgnore

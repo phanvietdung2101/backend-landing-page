@@ -17,7 +17,7 @@ public class PricingTable {
 
     @NotNull
     @ManyToOne
-    private Image thumb;
+    private Image image;
 
     @NotEmpty
     private String title;

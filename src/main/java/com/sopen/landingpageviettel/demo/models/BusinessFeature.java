@@ -17,7 +17,7 @@ public class BusinessFeature {
 
     @NotNull
     @ManyToOne
-    private Image icon;
+    private Image image;
 
     @NotEmpty
     private String title;

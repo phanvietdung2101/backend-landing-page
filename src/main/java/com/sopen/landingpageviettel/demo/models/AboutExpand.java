@@ -16,7 +16,7 @@ public class AboutExpand {
 
     @NotNull
     @ManyToOne
-    private Image icon;
+    private Image image;
 
     @NotEmpty
     private String title;

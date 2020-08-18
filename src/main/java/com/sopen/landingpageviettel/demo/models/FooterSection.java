@@ -16,7 +16,7 @@ public class FooterSection {
 
     @NotNull
     @ManyToOne
-    private Image logo_src;
+    private Image image;
 
     @NotEmpty
     private String title;

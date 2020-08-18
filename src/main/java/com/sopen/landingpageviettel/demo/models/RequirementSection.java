@@ -22,7 +22,7 @@ public class RequirementSection {
 
     @NotNull
     @ManyToOne
-    private Image image_url;
+    private Image image;
 
     @NotEmpty
     private String button_title;

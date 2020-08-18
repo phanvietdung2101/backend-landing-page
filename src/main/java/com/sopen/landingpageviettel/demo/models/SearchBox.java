@@ -15,7 +15,7 @@ public class SearchBox {
 
     @NotNull
     @ManyToOne
-    private Image logo_src;
+    private Image image;
 
     @NotEmpty
     private String search_placeholder;

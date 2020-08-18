@@ -16,14 +16,7 @@ public class BrandLogo {
 
     @NotNull
     @ManyToOne
-    private Image logo;
-
-    @NotNull
-    @ManyToOne
-    private Image logoHover;
-
-    @NotEmpty
-    private String alt;
+    private Image image;
 
     @ManyToOne
     @JsonIgnore

@@ -27,5 +27,5 @@ public class HeroBranding {
 
     @NotNull
     @ManyToOne
-    private Image background_img;
+    private Image image;
 }

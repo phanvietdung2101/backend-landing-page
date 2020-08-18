@@ -25,7 +25,7 @@ public class BusinessSection {
 
     @NotNull
     @ManyToOne
-    private Image image_url;
+    private Image image;
 
     @NotEmpty
     @OneToMany(mappedBy = "businessSection")

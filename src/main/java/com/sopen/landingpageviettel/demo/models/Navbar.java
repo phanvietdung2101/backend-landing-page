@@ -15,5 +15,5 @@ public class Navbar {
 
     @NotNull
     @ManyToOne
-    private Image logo_src;
+    private Image image;
 }
