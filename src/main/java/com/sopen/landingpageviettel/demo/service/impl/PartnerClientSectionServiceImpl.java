@@ -43,7 +43,9 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
             , rollbackFor = ConstraintViolationException.class
     )
     public PartnerClientSection savePartnerClientSectionTransaction(PartnerClientSection partnerClientSection) {
-        partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);
+        if (partnerClientSection.getId() == null) {
+            partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);
+        }
         List<BrandLogo> brandLogoList = partnerClientSection.getBrandLogoList();
         for (BrandLogo brandLogo : brandLogoList) {
             brandLogo.setPartnerClientSection(partnerClientSection);

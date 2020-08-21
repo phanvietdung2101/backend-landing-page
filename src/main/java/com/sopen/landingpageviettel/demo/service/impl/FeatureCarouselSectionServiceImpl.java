@@ -42,7 +42,9 @@ public class FeatureCarouselSectionServiceImpl implements FeatureCarouselSection
             propagation = Propagation.REQUIRES_NEW
             , rollbackFor = ConstraintViolationException.class)
     FeatureCarouselSection saveFeatureCarouselSectionTransaction(FeatureCarouselSection featureCarouselSection) {
-        featureCarouselSection = featureCarouselSectionRepository.save(featureCarouselSection);
+        if (featureCarouselSection.getId() == null) {
+            featureCarouselSection = featureCarouselSectionRepository.save(featureCarouselSection);
+        }
         List<FeatureCarousel> featureCarouselList = featureCarouselSection.getFeatureCarouselList();
         for (FeatureCarousel featureCarousel : featureCarouselList) {
             featureCarousel.setFeatureCarouselSection(featureCarouselSection);

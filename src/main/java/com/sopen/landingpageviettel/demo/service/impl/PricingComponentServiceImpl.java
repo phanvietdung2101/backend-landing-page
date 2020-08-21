@@ -43,7 +43,9 @@ public class PricingComponentServiceImpl implements PricingComponentService {
             , rollbackFor = ConstraintViolationException.class
     )
     public PricingComponent savePricingComponentTransaction(PricingComponent pricingComponent) {
-        pricingComponent = pricingComponentRepository.save(pricingComponent);
+        if (pricingComponent.getId() == null) {
+            pricingComponent = pricingComponentRepository.save(pricingComponent);
+        }
         List<PricingTable> pricingTableList = pricingComponent.getPricingTableList();
         for (PricingTable pricingTable : pricingTableList) {
             pricingTable.setPricingComponent(pricingComponent);

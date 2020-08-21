@@ -43,7 +43,9 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
             , rollbackFor = ConstraintViolationException.class
     )
     public ProgressCircle saveProgressCircleTransaction(ProgressCircle progressCircle) {
-        progressCircle = progressCircleRepository.save(progressCircle);
+        if (progressCircle.getId() == null) {
+            progressCircle = progressCircleRepository.save(progressCircle);
+        }
         List<FeatureProgress> featureProgressList = progressCircle.getFeatureProgressList();
         for (FeatureProgress featureProgress : featureProgressList) {
             featureProgress.setProgressCircle(progressCircle);

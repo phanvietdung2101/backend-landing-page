@@ -42,7 +42,9 @@ public class AboutSectionServiceImpl implements AboutSectionService {
     @Transactional(propagation = Propagation.REQUIRES_NEW
             , rollbackFor = ConstraintViolationException.class)
     AboutSection saveAboutSectionTransaction(AboutSection aboutSection) {
-        aboutSection = aboutSectionRepository.save(aboutSection);
+        if (aboutSection.getId() == null) {
+            aboutSection = aboutSectionRepository.save(aboutSection);
+        }
         List<AboutExpand> aboutExpandList = aboutSection.getAboutExpandList();
         for (AboutExpand aboutExpand : aboutExpandList) {
             aboutExpand.setAboutSection(aboutSection);
