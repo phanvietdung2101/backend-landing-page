@@ -25,7 +25,6 @@ public class PricingTable {
     @NotEmpty
     private String value;
 
-    @NotEmpty
     private String alt;
 
     @NotEmpty
