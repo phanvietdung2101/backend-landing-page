@@ -51,6 +51,7 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
             featureProgress.setProgressCircle(progressCircle);
             featureProgressRepository.save(featureProgress);
         }
+        progressCircleRepository.save(progressCircle);
         return progressCircle;
     }
 }

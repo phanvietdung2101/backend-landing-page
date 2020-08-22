@@ -51,6 +51,7 @@ public class FooterSectionServiceImpl implements FooterSectionService {
             footerLink.setFooterSection(footerSection);
             footerLinkRepository.save(footerLink);
         }
+        footerSectionRepository.save(footerSection);
         return footerSection;
     }
 }

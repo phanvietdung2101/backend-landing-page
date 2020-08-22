@@ -49,6 +49,7 @@ public class BusinessSectionServiceImpl implements BusinessSectionService {
             businessFeature.setBusinessSection(businessSection);
             businessFeatureRepository.save(businessFeature);
         }
+        businessSectionRepository.save(businessSection);
         return businessSection;
     }
 }

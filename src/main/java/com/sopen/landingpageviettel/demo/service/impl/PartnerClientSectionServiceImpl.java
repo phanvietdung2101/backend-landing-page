@@ -51,6 +51,7 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
             brandLogo.setPartnerClientSection(partnerClientSection);
             brandLogoRepository.save(brandLogo);
         }
+        partnerClientSectionRepository.save(partnerClientSection);
         return partnerClientSection;
     }
 }

@@ -50,6 +50,7 @@ public class AboutSectionServiceImpl implements AboutSectionService {
             aboutExpand.setAboutSection(aboutSection);
             aboutExpandRepository.save(aboutExpand);
         }
+        aboutSectionRepository.save(aboutSection);
         return aboutSection;
     }
 }

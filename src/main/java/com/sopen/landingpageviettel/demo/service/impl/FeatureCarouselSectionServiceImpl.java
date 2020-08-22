@@ -50,6 +50,7 @@ public class FeatureCarouselSectionServiceImpl implements FeatureCarouselSection
             featureCarousel.setFeatureCarouselSection(featureCarouselSection);
             featureCarouselRepository.save(featureCarousel);
         }
+        featureCarouselSectionRepository.save(featureCarouselSection);
         return featureCarouselSection;
     }
 

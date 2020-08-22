@@ -51,6 +51,7 @@ public class PricingComponentServiceImpl implements PricingComponentService {
             pricingTable.setPricingComponent(pricingComponent);
             pricingTableRepository.save(pricingTable);
         }
+        pricingComponentRepository.save(pricingComponent);
         return pricingComponent;
     }
 }
