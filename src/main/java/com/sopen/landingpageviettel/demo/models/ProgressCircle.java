@@ -14,6 +14,6 @@ public class ProgressCircle {
     private Long id;
 
     @NotEmpty
-    @OneToMany(mappedBy = "progressCircle")
+    @OneToMany(mappedBy = "progressCircle", orphanRemoval = true)
     private List<FeatureProgress> featureProgressList;
 }

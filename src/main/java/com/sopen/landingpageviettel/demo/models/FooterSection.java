@@ -15,13 +15,13 @@ public class FooterSection {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty
     private String title;
 
     @NotEmpty
-    @OneToMany(mappedBy = "footerSection")
+    @OneToMany(mappedBy = "footerSection", orphanRemoval = true)
     private List<FooterLink> footerLinkList;
 }

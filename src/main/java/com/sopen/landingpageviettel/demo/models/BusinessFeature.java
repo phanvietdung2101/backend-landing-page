@@ -16,7 +16,7 @@ public class BusinessFeature {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty

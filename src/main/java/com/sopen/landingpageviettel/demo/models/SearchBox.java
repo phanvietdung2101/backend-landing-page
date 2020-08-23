@@ -14,7 +14,7 @@ public class SearchBox {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty

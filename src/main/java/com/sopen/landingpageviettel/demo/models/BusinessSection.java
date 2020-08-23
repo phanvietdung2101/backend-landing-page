@@ -24,10 +24,10 @@ public class BusinessSection {
     private String video_title;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty
-    @OneToMany(mappedBy = "businessSection")
+    @OneToMany(mappedBy = "businessSection", orphanRemoval = true)
     private List<BusinessFeature> businessFeatureList;
 }

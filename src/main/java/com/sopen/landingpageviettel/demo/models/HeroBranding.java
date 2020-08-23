@@ -26,6 +26,6 @@ public class HeroBranding {
     private String button_href;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 }

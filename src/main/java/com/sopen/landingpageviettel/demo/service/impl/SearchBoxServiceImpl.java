@@ -23,6 +23,11 @@ public class SearchBoxServiceImpl implements SearchBoxService {
     @Override
     public ServiceResult save(SearchBox searchBox) {
         try {
+            if (searchBox.getId() != null){
+                long id = searchBox.getId();
+                searchBox.setId(null);
+                searchBoxRepository.deleteById(id);
+            }
             searchBox = searchBoxRepository.save(searchBox);
         } catch (ConstraintViolationException e) {
             return new ServiceResult(e.getCause(), "object field must be not null or empty");

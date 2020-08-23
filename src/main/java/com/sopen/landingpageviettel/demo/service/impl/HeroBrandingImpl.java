@@ -23,6 +23,11 @@ public class HeroBrandingImpl implements HeroBrandingService {
     @Override
     public ServiceResult save(HeroBranding heroBranding) {
         try {
+            if (heroBranding.getId() != null) {
+                long id = heroBranding.getId();
+                heroBranding.setId(id);
+                heroBrandingRepository.deleteById(id);
+            }
             heroBranding = heroBrandingRepository.save(heroBranding);
         } catch (ConstraintViolationException e) {
             return new ServiceResult(e.getCause(), "object field must be not null or empty");

@@ -20,6 +20,6 @@ public class AboutSection {
     private String text;
 
     @NotEmpty
-    @OneToMany(mappedBy = "aboutSection")
+    @OneToMany(mappedBy = "aboutSection", orphanRemoval = true)
     private List<AboutExpand> aboutExpandList;
 }

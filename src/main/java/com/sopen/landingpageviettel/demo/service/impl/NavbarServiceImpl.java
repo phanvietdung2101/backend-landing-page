@@ -24,6 +24,11 @@ public class NavbarServiceImpl implements NavbarService {
     @Override
     public ServiceResult save(Navbar navbar) {
         try {
+            if( navbar.getId() != null) {
+                long id = navbar.getId();
+                navbar.setId(null);
+                navbarRepository.deleteById(id);
+            }
             navbar = navbarRepository.save(navbar);
         } catch (ConstraintViolationException e) {
             return new ServiceResult(e.getCause(), "object field must be not null or empty");
