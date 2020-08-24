@@ -20,6 +20,6 @@ public class PartnerClientSection {
     private String text;
 
     @NotEmpty
-    @OneToMany(mappedBy = "partnerClientSection", orphanRemoval = true)
+    @OneToMany(mappedBy = "partnerClientSection")
     private List<BrandLogo> brandLogoList;
 }

@@ -24,9 +24,7 @@ public class NewsLetterSectionServiceImpl implements NewsLetterSectionService {
     public ServiceResult save(NewsletterSection newsletterSection) {
         try {
             if (newsletterSection.getId() != null) {
-                long id = newsletterSection.getId();
                 newsletterSection.setId(null);
-                newsletterSectionRepository.deleteById(id);
             }
             newsletterSection = newsletterSectionRepository.save(newsletterSection);
         } catch (ConstraintViolationException e) {

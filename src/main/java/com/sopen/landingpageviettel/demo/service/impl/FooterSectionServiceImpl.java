@@ -44,9 +44,7 @@ public class FooterSectionServiceImpl implements FooterSectionService {
     )
     FooterSection saveFooterSectionTransaction(FooterSection footerSection) {
         if (footerSection.getId() != null) {
-            long id = footerSection.getId();
             footerSection.setId(null);
-            footerSectionRepository.deleteById(id);
         }
         footerSection = footerSectionRepository.save(footerSection);
         List<FooterLink> footerLinkList = footerSection.getFooterLinkList();

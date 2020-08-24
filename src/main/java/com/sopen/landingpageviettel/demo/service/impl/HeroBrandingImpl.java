@@ -24,9 +24,7 @@ public class HeroBrandingImpl implements HeroBrandingService {
     public ServiceResult save(HeroBranding heroBranding) {
         try {
             if (heroBranding.getId() != null) {
-                long id = heroBranding.getId();
-                heroBranding.setId(id);
-                heroBrandingRepository.deleteById(id);
+                heroBranding.setId(null);
             }
             heroBranding = heroBrandingRepository.save(heroBranding);
         } catch (ConstraintViolationException e) {

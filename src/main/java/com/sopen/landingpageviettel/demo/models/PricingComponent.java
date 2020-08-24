@@ -23,6 +23,6 @@ public class PricingComponent {
     private String popularTitle;
 
     @NotEmpty
-    @OneToMany(mappedBy = "pricingComponent", orphanRemoval = true)
+    @OneToMany(mappedBy = "pricingComponent")
     private List<PricingTable> pricingTableList;
 }

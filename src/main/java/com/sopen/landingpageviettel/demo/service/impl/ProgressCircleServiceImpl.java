@@ -44,9 +44,7 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
     )
     public ProgressCircle saveProgressCircleTransaction(ProgressCircle progressCircle) {
         if (progressCircle.getId() != null) {
-            long id = progressCircle.getId();
             progressCircle.setId(null);
-            progressCircleRepository.deleteById(id);
         }
         progressCircle = progressCircleRepository.save(progressCircle);
         List<FeatureProgress> featureProgressList = progressCircle.getFeatureProgressList();

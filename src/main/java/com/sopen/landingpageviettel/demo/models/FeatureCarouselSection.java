@@ -14,6 +14,6 @@ public class FeatureCarouselSection {
     private Long id;
 
     @NotEmpty
-    @OneToMany(mappedBy = "featureCarouselSection", orphanRemoval = true)
+    @OneToMany(mappedBy = "featureCarouselSection")
     private List<FeatureCarousel> featureCarouselList;
 }

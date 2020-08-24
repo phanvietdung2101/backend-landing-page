@@ -42,9 +42,7 @@ public class BusinessSectionServiceImpl implements BusinessSectionService {
             , rollbackFor = ConstraintViolationException.class)
     BusinessSection saveBusinessSectionTransaction(BusinessSection businessSection) {
         if (businessSection.getId() != null) {
-            long id = businessSection.getId();
             businessSection.setId(null);
-            businessSectionRepository.deleteById(id);
         }
         businessSection = businessSectionRepository.save(businessSection);
         List<BusinessFeature> businessFeatureList = businessSection.getBusinessFeatureList();

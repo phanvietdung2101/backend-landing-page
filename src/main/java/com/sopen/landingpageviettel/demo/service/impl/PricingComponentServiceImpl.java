@@ -44,13 +44,12 @@ public class PricingComponentServiceImpl implements PricingComponentService {
     )
     public PricingComponent savePricingComponentTransaction(PricingComponent pricingComponent) {
         if (pricingComponent.getId() != null) {
-            long id = pricingComponent.getId();
             pricingComponent.setId(null);
-            pricingComponentRepository.deleteById(id);
         }
         pricingComponent = pricingComponentRepository.save(pricingComponent);
         List<PricingTable> pricingTableList = pricingComponent.getPricingTableList();
         for (PricingTable pricingTable : pricingTableList) {
+            pricingTable.setId(null);
             pricingTable.setPricingComponent(pricingComponent);
             pricingTableRepository.save(pricingTable);
         }

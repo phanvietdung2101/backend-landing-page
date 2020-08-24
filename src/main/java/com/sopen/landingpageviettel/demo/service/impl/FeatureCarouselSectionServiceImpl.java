@@ -43,9 +43,7 @@ public class FeatureCarouselSectionServiceImpl implements FeatureCarouselSection
             , rollbackFor = ConstraintViolationException.class)
     FeatureCarouselSection saveFeatureCarouselSectionTransaction(FeatureCarouselSection featureCarouselSection) {
         if (featureCarouselSection.getId() != null) {
-            long id = featureCarouselSection.getId();
             featureCarouselSection.setId(null);
-            featureCarouselSectionRepository.deleteById(id);
         }
         featureCarouselSection = featureCarouselSectionRepository.save(featureCarouselSection);
         List<FeatureCarousel> featureCarouselList = featureCarouselSection.getFeatureCarouselList();

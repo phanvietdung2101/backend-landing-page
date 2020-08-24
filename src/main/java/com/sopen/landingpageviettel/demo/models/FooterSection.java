@@ -22,6 +22,6 @@ public class FooterSection {
     private String title;
 
     @NotEmpty
-    @OneToMany(mappedBy = "footerSection", orphanRemoval = true)
+    @OneToMany(mappedBy = "footerSection")
     private List<FooterLink> footerLinkList;
 }

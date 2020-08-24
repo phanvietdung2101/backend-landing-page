@@ -28,6 +28,6 @@ public class BusinessSection {
     private Image image;
 
     @NotEmpty
-    @OneToMany(mappedBy = "businessSection", orphanRemoval = true)
+    @OneToMany(mappedBy = "businessSection")
     private List<BusinessFeature> businessFeatureList;
 }

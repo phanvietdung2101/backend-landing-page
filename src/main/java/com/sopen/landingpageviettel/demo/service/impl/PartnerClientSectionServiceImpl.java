@@ -45,9 +45,7 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
     )
     public PartnerClientSection savePartnerClientSectionTransaction(PartnerClientSection partnerClientSection) {
         if (partnerClientSection.getId() != null) {
-            long id = partnerClientSection.getId();
             partnerClientSection.setId(null);
-            partnerClientSectionRepository.deleteById(id);
         }
         List<BrandLogo> brandLogoList = partnerClientSection.getBrandLogoList();
         partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);

@@ -25,9 +25,7 @@ public class NavbarServiceImpl implements NavbarService {
     public ServiceResult save(Navbar navbar) {
         try {
             if( navbar.getId() != null) {
-                long id = navbar.getId();
                 navbar.setId(null);
-                navbarRepository.deleteById(id);
             }
             navbar = navbarRepository.save(navbar);
         } catch (ConstraintViolationException e) {

@@ -24,9 +24,7 @@ public class RequirementSectionServiceImpl implements RequirementSectionService 
     public ServiceResult save(RequirementSection requirementSection) {
         try {
             if (requirementSection.getId() != null){
-                long id = requirementSection.getId();
                 requirementSection.setId(null);
-                requirementSectionRepository.deleteById(id);
             }
             requirementSection = requirementSectionRepository.save(requirementSection);
         } catch (ConstraintViolationException e) {
