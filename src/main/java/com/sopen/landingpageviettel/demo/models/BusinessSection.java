@@ -24,7 +24,7 @@ public class BusinessSection {
     private String video_title;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty

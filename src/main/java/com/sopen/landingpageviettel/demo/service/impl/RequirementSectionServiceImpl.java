@@ -23,6 +23,9 @@ public class RequirementSectionServiceImpl implements RequirementSectionService 
     @Override
     public ServiceResult save(RequirementSection requirementSection) {
         try {
+            if (requirementSection.getId() != null){
+                requirementSection.setId(null);
+            }
             requirementSection = requirementSectionRepository.save(requirementSection);
         } catch (ConstraintViolationException e) {
             return new ServiceResult(e.getCause(), "object field must be not null or empty");

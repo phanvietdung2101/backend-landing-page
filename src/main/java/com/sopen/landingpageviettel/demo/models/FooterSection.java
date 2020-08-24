@@ -15,7 +15,7 @@ public class FooterSection {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty

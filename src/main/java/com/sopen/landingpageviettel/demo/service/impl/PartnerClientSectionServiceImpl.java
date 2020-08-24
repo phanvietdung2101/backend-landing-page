@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class PartnerClientSectionServiceImpl implements PartnerClientSectionService {
@@ -43,10 +44,11 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
             , rollbackFor = ConstraintViolationException.class
     )
     public PartnerClientSection savePartnerClientSectionTransaction(PartnerClientSection partnerClientSection) {
-        if (partnerClientSection.getId() == null) {
-            partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);
+        if (partnerClientSection.getId() != null) {
+            partnerClientSection.setId(null);
         }
         List<BrandLogo> brandLogoList = partnerClientSection.getBrandLogoList();
+        partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);
         for (BrandLogo brandLogo : brandLogoList) {
             brandLogo.setPartnerClientSection(partnerClientSection);
             brandLogoRepository.save(brandLogo);

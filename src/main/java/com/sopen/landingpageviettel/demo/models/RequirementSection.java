@@ -21,7 +21,7 @@ public class RequirementSection {
     private String description;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty

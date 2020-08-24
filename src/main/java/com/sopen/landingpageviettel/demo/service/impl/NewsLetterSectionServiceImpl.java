@@ -23,11 +23,13 @@ public class NewsLetterSectionServiceImpl implements NewsLetterSectionService {
     @Override
     public ServiceResult save(NewsletterSection newsletterSection) {
         try {
+            if (newsletterSection.getId() != null) {
+                newsletterSection.setId(null);
+            }
             newsletterSection = newsletterSectionRepository.save(newsletterSection);
         } catch (ConstraintViolationException e) {
             return new ServiceResult(e.getCause(), "object field must be not null or empty");
         }
-
         return new ServiceResult(newsletterSection, "ok");
     }
 }

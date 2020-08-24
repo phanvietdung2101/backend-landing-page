@@ -43,9 +43,10 @@ public class FooterSectionServiceImpl implements FooterSectionService {
             , rollbackFor = ConstraintViolationException.class
     )
     FooterSection saveFooterSectionTransaction(FooterSection footerSection) {
-        if (footerSection.getId() == null) {
-            footerSection = footerSectionRepository.save(footerSection);
+        if (footerSection.getId() != null) {
+            footerSection.setId(null);
         }
+        footerSection = footerSectionRepository.save(footerSection);
         List<FooterLink> footerLinkList = footerSection.getFooterLinkList();
         for (FooterLink footerLink : footerLinkList) {
             footerLink.setFooterSection(footerSection);

@@ -41,9 +41,10 @@ public class BusinessSectionServiceImpl implements BusinessSectionService {
     @Transactional(propagation = Propagation.REQUIRES_NEW
             , rollbackFor = ConstraintViolationException.class)
     BusinessSection saveBusinessSectionTransaction(BusinessSection businessSection) {
-        if (businessSection.getId() == null) {
-            businessSection = businessSectionRepository.save(businessSection);
+        if (businessSection.getId() != null) {
+            businessSection.setId(null);
         }
+        businessSection = businessSectionRepository.save(businessSection);
         List<BusinessFeature> businessFeatureList = businessSection.getBusinessFeatureList();
         for (BusinessFeature businessFeature : businessFeatureList) {
             businessFeature.setBusinessSection(businessSection);

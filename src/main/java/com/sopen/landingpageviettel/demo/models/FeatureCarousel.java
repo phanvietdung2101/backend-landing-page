@@ -21,7 +21,7 @@ public class FeatureCarousel {
     private String description;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @ManyToOne

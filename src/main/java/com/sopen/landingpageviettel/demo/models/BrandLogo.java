@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -15,7 +14,7 @@ public class BrandLogo {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @ManyToOne

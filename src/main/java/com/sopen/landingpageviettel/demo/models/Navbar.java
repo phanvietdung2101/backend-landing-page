@@ -14,6 +14,6 @@ public class Navbar {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 }

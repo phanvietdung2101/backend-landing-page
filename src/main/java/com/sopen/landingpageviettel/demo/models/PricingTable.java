@@ -16,7 +16,7 @@ public class PricingTable {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @NotEmpty
@@ -25,7 +25,6 @@ public class PricingTable {
     @NotEmpty
     private String value;
 
-    @NotEmpty
     private String alt;
 
     @NotEmpty
