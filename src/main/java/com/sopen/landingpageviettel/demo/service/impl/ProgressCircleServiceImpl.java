@@ -8,7 +8,10 @@ import com.sopen.landingpageviettel.demo.service.ProgressCircleService;
 import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -22,18 +25,32 @@ public class ProgressCircleServiceImpl implements ProgressCircleService {
     @Override
     public ServiceResult getLatest() {
         ProgressCircle progressCircle = progressCircleRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(progressCircle,"ok");
+        return new ServiceResult(progressCircle, "ok");
     }
 
     @Override
-    public ServiceResult create(ProgressCircle progressCircle) {
-        progressCircleRepository.save(progressCircle);
+    public ServiceResult save(ProgressCircle progressCircle) {
+        try {
+            progressCircle = saveProgressCircleTransaction(progressCircle);
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
+        }
+        return new ServiceResult(progressCircle, "ok");
+    }
+
+    @Transactional(
+            propagation = Propagation.REQUIRES_NEW
+            , rollbackFor = ConstraintViolationException.class
+    )
+    public ProgressCircle saveProgressCircleTransaction(ProgressCircle progressCircle) {
+        if (progressCircle.getId() == null) {
+            progressCircle = progressCircleRepository.save(progressCircle);
+        }
         List<FeatureProgress> featureProgressList = progressCircle.getFeatureProgressList();
-        featureProgressList.forEach(featureProgress -> {
+        for (FeatureProgress featureProgress : featureProgressList) {
             featureProgress.setProgressCircle(progressCircle);
-            // save feature progress
             featureProgressRepository.save(featureProgress);
-        });
-        return new ServiceResult("ok");
+        }
+        return progressCircle;
     }
 }

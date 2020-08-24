@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface GeneralService<E> {
     ServiceResult getLatest();
-    ServiceResult create(E e);
+    ServiceResult save(E e);
 }

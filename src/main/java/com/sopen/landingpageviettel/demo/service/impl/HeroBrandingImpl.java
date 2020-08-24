@@ -7,7 +7,7 @@ import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.validation.ConstraintViolationException;
 
 @Service
 public class HeroBrandingImpl implements HeroBrandingService {
@@ -17,12 +17,16 @@ public class HeroBrandingImpl implements HeroBrandingService {
     @Override
     public ServiceResult getLatest() {
         HeroBranding heroBranding = heroBrandingRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(heroBranding,"ok");
+        return new ServiceResult(heroBranding, "ok");
     }
 
     @Override
-    public ServiceResult create(HeroBranding heroBranding) {
-        heroBrandingRepository.save(heroBranding);
-        return new ServiceResult("ok");
+    public ServiceResult save(HeroBranding heroBranding) {
+        try {
+            heroBranding = heroBrandingRepository.save(heroBranding);
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
+        }
+        return new ServiceResult(heroBranding, "ok");
     }
 }

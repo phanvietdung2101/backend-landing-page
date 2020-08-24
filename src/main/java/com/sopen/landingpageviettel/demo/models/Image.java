@@ -6,14 +6,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Data
 @Entity
-public class Navbar {
+@Data
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @ManyToOne
-    private Image image;
+    private String name;
+
+    private String url;
+
+    @Lob
+    private byte[] data;
 }

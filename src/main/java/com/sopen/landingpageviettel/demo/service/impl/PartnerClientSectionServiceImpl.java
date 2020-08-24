@@ -8,7 +8,10 @@ import com.sopen.landingpageviettel.demo.service.PartnerClientSectionService;
 import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -22,18 +25,32 @@ public class PartnerClientSectionServiceImpl implements PartnerClientSectionServ
     @Override
     public ServiceResult getLatest() {
         PartnerClientSection partnerClientSection = partnerClientSectionRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(partnerClientSection,"ok");
+        return new ServiceResult(partnerClientSection, "ok");
     }
 
     @Override
-    public ServiceResult create(PartnerClientSection partnerClientSection) {
-        partnerClientSectionRepository.save(partnerClientSection);
+    public ServiceResult save(PartnerClientSection partnerClientSection) {
+        try {
+            partnerClientSection = savePartnerClientSectionTransaction(partnerClientSection);
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
+        }
+        return new ServiceResult(partnerClientSection, "ok");
+    }
+
+    @Transactional(
+            propagation = Propagation.REQUIRES_NEW
+            , rollbackFor = ConstraintViolationException.class
+    )
+    public PartnerClientSection savePartnerClientSectionTransaction(PartnerClientSection partnerClientSection) {
+        if (partnerClientSection.getId() == null) {
+            partnerClientSection = partnerClientSectionRepository.save(partnerClientSection);
+        }
         List<BrandLogo> brandLogoList = partnerClientSection.getBrandLogoList();
-        brandLogoList.forEach(brandLogo -> {
+        for (BrandLogo brandLogo : brandLogoList) {
             brandLogo.setPartnerClientSection(partnerClientSection);
-            // save brand logo
             brandLogoRepository.save(brandLogo);
-        });
-        return new ServiceResult("ok");
+        }
+        return partnerClientSection;
     }
 }

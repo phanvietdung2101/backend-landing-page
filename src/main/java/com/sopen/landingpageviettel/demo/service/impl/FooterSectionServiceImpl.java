@@ -8,7 +8,10 @@ import com.sopen.landingpageviettel.demo.service.FooterSectionService;
 import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -22,18 +25,32 @@ public class FooterSectionServiceImpl implements FooterSectionService {
     @Override
     public ServiceResult getLatest() {
         FooterSection footerSection = footerSectionRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(footerSection,"ok");
+        return new ServiceResult(footerSection, "ok");
     }
 
     @Override
-    public ServiceResult create(FooterSection footerSection) {
-        footerSectionRepository.save(footerSection);
+    public ServiceResult save(FooterSection footerSection) {
+        try {
+            footerSection = saveFooterSectionTransaction(footerSection);
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
+        }
+        return new ServiceResult(footerSection, "ok");
+    }
+
+    @Transactional(
+            propagation = Propagation.REQUIRES_NEW
+            , rollbackFor = ConstraintViolationException.class
+    )
+    FooterSection saveFooterSectionTransaction(FooterSection footerSection) {
+        if (footerSection.getId() == null) {
+            footerSection = footerSectionRepository.save(footerSection);
+        }
         List<FooterLink> footerLinkList = footerSection.getFooterLinkList();
-        footerLinkList.forEach(footerLink -> {
+        for (FooterLink footerLink : footerLinkList) {
             footerLink.setFooterSection(footerSection);
-            // save footer link
             footerLinkRepository.save(footerLink);
-        });
-        return new ServiceResult("ok");
+        }
+        return footerSection;
     }
 }

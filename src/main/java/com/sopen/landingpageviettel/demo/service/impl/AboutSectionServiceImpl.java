@@ -8,7 +8,10 @@ import com.sopen.landingpageviettel.demo.service.AboutSectionService;
 import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -27,15 +30,26 @@ public class AboutSectionServiceImpl implements AboutSectionService {
     }
 
     @Override
-    public ServiceResult create(AboutSection aboutSection) {
-        aboutSectionRepository.save(aboutSection);
-        // set aboutSection for aboutExpand list
+    public ServiceResult save(AboutSection aboutSection) {
+        try {
+            aboutSection = saveAboutSectionTransaction(aboutSection);
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
+        }
+        return new ServiceResult(aboutSection, "ok");
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW
+            , rollbackFor = ConstraintViolationException.class)
+    AboutSection saveAboutSectionTransaction(AboutSection aboutSection) {
+        if (aboutSection.getId() == null) {
+            aboutSection = aboutSectionRepository.save(aboutSection);
+        }
         List<AboutExpand> aboutExpandList = aboutSection.getAboutExpandList();
-        aboutExpandList.forEach(aboutExpand -> {
+        for (AboutExpand aboutExpand : aboutExpandList) {
             aboutExpand.setAboutSection(aboutSection);
-            // save aboutExpand
             aboutExpandRepository.save(aboutExpand);
-        });
-        return new ServiceResult("ok");
+        }
+        return aboutSection;
     }
 }

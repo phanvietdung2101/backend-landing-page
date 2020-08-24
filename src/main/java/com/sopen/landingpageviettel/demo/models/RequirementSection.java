@@ -3,6 +3,8 @@ package com.sopen.landingpageviettel.demo.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -12,10 +14,23 @@ public class RequirementSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String title;
-    private String description;
-    private String image_url;
 
+    @NotEmpty
+    private String description;
+
+    @NotNull
+    @ManyToOne
+    private Image image;
+
+    @NotEmpty
+    private String button_title;
+
+    @NotEmpty
+    private String button_href;
+
+    @NotEmpty
     @ElementCollection
     private List<String> requirementList;
 }

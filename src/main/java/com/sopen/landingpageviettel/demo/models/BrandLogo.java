@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -12,11 +14,9 @@ public class BrandLogo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String logo;
-
-    private String logoHover;
-
-    private String alt;
+    @NotNull
+    @ManyToOne
+    private Image image;
 
     @ManyToOne
     @JsonIgnore

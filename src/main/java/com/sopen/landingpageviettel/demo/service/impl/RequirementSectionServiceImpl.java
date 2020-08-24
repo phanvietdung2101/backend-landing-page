@@ -7,7 +7,7 @@ import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.validation.ConstraintViolationException;
 
 @Service
 public class RequirementSectionServiceImpl implements RequirementSectionService {
@@ -17,12 +17,16 @@ public class RequirementSectionServiceImpl implements RequirementSectionService 
     @Override
     public ServiceResult getLatest() {
         RequirementSection requirementSection = requirementSectionRepository.findTopByOrderByIdDesc();
-        return new ServiceResult(requirementSection,"ok");
+        return new ServiceResult(requirementSection, "ok");
     }
 
     @Override
-    public ServiceResult create(RequirementSection requirementSection) {
-        requirementSectionRepository.save(requirementSection);
-        return new ServiceResult("ok");
+    public ServiceResult save(RequirementSection requirementSection) {
+        try {
+            requirementSection = requirementSectionRepository.save(requirementSection);
+        } catch (ConstraintViolationException e) {
+            return new ServiceResult(e.getCause(), "object field must be not null or empty");
+        }
+        return new ServiceResult(requirementSection, "ok");
     }
 }

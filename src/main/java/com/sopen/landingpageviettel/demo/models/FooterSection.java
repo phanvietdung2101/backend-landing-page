@@ -3,6 +3,8 @@ package com.sopen.landingpageviettel.demo.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -12,10 +14,14 @@ public class FooterSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String logoSrc;
+    @NotNull
+    @ManyToOne
+    private Image image;
 
+    @NotEmpty
     private String title;
 
+    @NotEmpty
     @OneToMany(mappedBy = "footerSection")
     private List<FooterLink> footerLinkList;
 }

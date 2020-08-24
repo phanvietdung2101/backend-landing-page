@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -13,10 +15,13 @@ public class FeatureProgress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String progress;
+    @NotNull
+    private Long progress;
 
+    @NotEmpty
     private String featureListTitle;
 
+    @NotEmpty
     @ElementCollection
     private List<String> featureList;
 

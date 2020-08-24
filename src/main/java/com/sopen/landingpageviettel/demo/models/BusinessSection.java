@@ -3,6 +3,8 @@ package com.sopen.landingpageviettel.demo.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -12,11 +14,20 @@ public class BusinessSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String section_title;
-    private String video_url;
-    private String video_title;
-    private String image_url;
 
+    @NotEmpty
+    private String video_url;
+
+    @NotEmpty
+    private String video_title;
+
+    @NotNull
+    @ManyToOne
+    private Image image;
+
+    @NotEmpty
     @OneToMany(mappedBy = "businessSection")
     private List<BusinessFeature> businessFeatureList;
 }

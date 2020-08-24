@@ -1,9 +1,10 @@
 package com.sopen.landingpageviettel.demo.repository;
 
-import com.sopen.landingpageviettel.demo.models.AboutExpand;
+import com.sopen.landingpageviettel.demo.models.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AboutExpandRepository extends JpaRepository<AboutExpand, Long> {
+public interface ImageRepository extends JpaRepository<Image, Long> {
+
 }
