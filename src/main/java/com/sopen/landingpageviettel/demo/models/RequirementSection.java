@@ -33,4 +33,7 @@ public class RequirementSection {
     @NotEmpty
     @ElementCollection
     private List<String> requirementList;
+
+    private Boolean showSection;
+
 }

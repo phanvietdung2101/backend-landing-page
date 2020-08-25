@@ -28,4 +28,7 @@ public class HeroBranding {
     @NotNull
     @OneToOne
     private Image image;
+
+    private Boolean showSection;
+
 }

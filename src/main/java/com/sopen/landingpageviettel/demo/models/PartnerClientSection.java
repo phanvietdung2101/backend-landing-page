@@ -22,4 +22,7 @@ public class PartnerClientSection {
     @NotEmpty
     @OneToMany(mappedBy = "partnerClientSection")
     private List<BrandLogo> brandLogoList;
+
+    private Boolean showSection;
+
 }

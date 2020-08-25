@@ -18,4 +18,6 @@ public class ProgressCircle {
     private List<FeatureProgress> featureProgressList;
 
     private String style;
+
+    private Boolean showSection;
 }

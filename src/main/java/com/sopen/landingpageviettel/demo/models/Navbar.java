@@ -17,5 +17,6 @@ public class Navbar {
     @OneToOne
     private Image image;
 
-    private Boolean showNavbar;
+    private Boolean showSection;
+
 }
