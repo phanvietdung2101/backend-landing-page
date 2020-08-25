@@ -19,6 +19,4 @@ public class SearchBox {
 
     @NotEmpty
     private String search_placeholder;
-
-    private String style;
 }

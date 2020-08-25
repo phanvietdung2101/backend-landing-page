@@ -22,6 +22,4 @@ public class AboutSection {
     @NotEmpty
     @OneToMany(mappedBy = "aboutSection")
     private List<AboutExpand> aboutExpandList;
-
-    private String style;
 }

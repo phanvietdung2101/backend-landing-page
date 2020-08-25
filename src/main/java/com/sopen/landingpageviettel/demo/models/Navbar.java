@@ -16,6 +16,4 @@ public class Navbar {
     @NotNull
     @OneToOne
     private Image image;
-
-    private String style;
 }

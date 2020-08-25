@@ -22,6 +22,4 @@ public class PartnerClientSection {
     @NotEmpty
     @OneToMany(mappedBy = "partnerClientSection")
     private List<BrandLogo> brandLogoList;
-
-    private String style;
 }

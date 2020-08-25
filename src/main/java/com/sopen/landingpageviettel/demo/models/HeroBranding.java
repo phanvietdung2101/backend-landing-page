@@ -28,6 +28,4 @@ public class HeroBranding {
     @NotNull
     @OneToOne
     private Image image;
-
-    private String style;
 }

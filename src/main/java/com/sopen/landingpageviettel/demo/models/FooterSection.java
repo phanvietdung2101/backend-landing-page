@@ -24,6 +24,4 @@ public class FooterSection {
     @NotEmpty
     @OneToMany(mappedBy = "footerSection")
     private List<FooterLink> footerLinkList;
-
-    private String style;
 }
