@@ -25,4 +25,6 @@ public class PricingComponent {
     @NotEmpty
     @OneToMany(mappedBy = "pricingComponent")
     private List<PricingTable> pricingTableList;
+
+    private String style;
 }

@@ -30,4 +30,6 @@ public class BusinessSection {
     @NotEmpty
     @OneToMany(mappedBy = "businessSection")
     private List<BusinessFeature> businessFeatureList;
+
+    private String style;
 }

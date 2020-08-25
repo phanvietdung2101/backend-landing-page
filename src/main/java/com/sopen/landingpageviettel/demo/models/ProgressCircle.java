@@ -16,4 +16,6 @@ public class ProgressCircle {
     @NotEmpty
     @OneToMany(mappedBy = "progressCircle")
     private List<FeatureProgress> featureProgressList;
+
+    private String style;
 }
