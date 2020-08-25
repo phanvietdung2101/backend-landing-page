@@ -16,4 +16,6 @@ public class Navbar {
     @NotNull
     @OneToOne
     private Image image;
+
+    private Boolean showNavbar;
 }
