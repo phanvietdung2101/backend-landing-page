@@ -19,4 +19,7 @@ public class Navbar {
 
     private Boolean showSection;
 
+    private String styleSection;
+
+    private String styleMenu;
 }
