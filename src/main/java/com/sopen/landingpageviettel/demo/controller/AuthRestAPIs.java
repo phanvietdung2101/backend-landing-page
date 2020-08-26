@@ -58,7 +58,7 @@ public class AuthRestAPIs {
         return ResponseEntity.ok(new JwtResponse(jwt,userDetails.getUsername(), (Collection<GrantedAuthority>) userDetails.getAuthorities()));
     }
 
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     public ResponseEntity<Void> registerUser( @RequestBody SignUpForm signUpRequest) {
         if(userRepository.existsByUsername(signUpRequest.getUsername())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
