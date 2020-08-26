@@ -21,10 +21,10 @@ public class HeroBranding {
     @NotEmpty
     private String description;
 
-    private String descriptionStyle;
+    private String description_style;
 
     @NotEmpty
-    private String buttonTitle;
+    private String button_title;
 
     private String button_title_style;
 
