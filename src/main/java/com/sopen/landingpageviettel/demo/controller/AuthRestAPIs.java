@@ -55,12 +55,12 @@ public class AuthRestAPIs {
 
         String jwt = jwtProvider.generateJwtToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        return ResponseEntity.ok(new JwtResponse(jwt,userDetails.getUsername(), (Collection<GrantedAuthority>) userDetails.getAuthorities()));
+        return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), (Collection<GrantedAuthority>) userDetails.getAuthorities()));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Void> registerUser( @RequestBody SignUpForm signUpRequest) {
-        if(userRepository.existsByUsername(signUpRequest.getUsername())) {
+    public ResponseEntity<Void> registerUser(@RequestBody SignUpForm signUpRequest) {
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         // Creating user's account
