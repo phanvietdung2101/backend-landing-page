@@ -16,4 +16,10 @@ public class Navbar {
     @NotNull
     @OneToOne
     private Image image;
+
+    private Boolean showSection;
+
+    private String styleSection;
+
+    private String styleMenu;
 }

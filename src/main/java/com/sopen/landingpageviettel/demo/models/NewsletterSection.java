@@ -32,4 +32,7 @@ public class NewsletterSection {
 
     @NotEmpty
     private String description_button_href;
+
+    private Boolean showSection;
+
 }

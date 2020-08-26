@@ -16,4 +16,7 @@ public class FeatureCarouselSection {
     @NotEmpty
     @OneToMany(mappedBy = "featureCarouselSection")
     private List<FeatureCarousel> featureCarouselList;
+
+    private Boolean showSection;
+
 }

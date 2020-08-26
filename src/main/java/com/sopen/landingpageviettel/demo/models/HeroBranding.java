@@ -16,11 +16,17 @@ public class HeroBranding {
     @NotEmpty
     private String title;
 
+    private String title_style;
+
     @NotEmpty
     private String description;
 
+    private String descriptionStyle;
+
     @NotEmpty
-    private String button_title;
+    private String buttonTitle;
+
+    private String button_title_style;
 
     @NotEmpty
     private String button_href;
@@ -28,4 +34,7 @@ public class HeroBranding {
     @NotNull
     @OneToOne
     private Image image;
+
+    private Boolean showSection;
+
 }
