@@ -19,4 +19,9 @@ public class FeatureCarouselSection {
 
     private Boolean showSection;
 
+    private String title_style;
+
+    private String description_style;
+
+    private String image_style;
 }

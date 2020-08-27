@@ -28,4 +28,19 @@ public class PricingComponent {
 
     private Boolean showSection;
 
+    private String title_style;
+
+    private String description_style;
+
+    private String pricing_stable_style;
+
+    private String table_title_style;
+
+    private String image_style;
+
+    private String price_style;
+
+    private String value_style;
+
+    private String button_style;
 }

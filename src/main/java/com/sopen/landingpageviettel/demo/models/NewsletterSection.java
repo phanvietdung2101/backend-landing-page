@@ -35,4 +35,13 @@ public class NewsletterSection {
 
     private Boolean showSection;
 
+    private String title_style;
+
+    private String description_style;
+
+    private String button_style;
+
+    private String newsletter_style;
+
+
 }
