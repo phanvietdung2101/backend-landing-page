@@ -25,4 +25,10 @@ public class PartnerClientSection {
 
     private Boolean showSection;
 
+    private String title_style;
+
+    private String text_style;
+
+    private String image_style;
+
 }

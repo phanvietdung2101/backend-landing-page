@@ -36,4 +36,13 @@ public class RequirementSection {
 
     private Boolean showSection;
 
+    private String title_style;
+
+    private String description_style;
+
+    private String image_style;
+
+    private String button_style;
+
+    private String text_style;
 }

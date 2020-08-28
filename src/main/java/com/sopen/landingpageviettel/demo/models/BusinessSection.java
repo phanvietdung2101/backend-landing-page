@@ -32,4 +32,16 @@ public class BusinessSection {
     private List<BusinessFeature> businessFeatureList;
 
     private Boolean showSection;
+
+    private String section_title_style;
+
+    private String video_title_style;
+
+    private String image_style;
+
+    private String feature_title_Style;
+
+    private String feature_description_style;
+
+    private String feature_image_style;
 }

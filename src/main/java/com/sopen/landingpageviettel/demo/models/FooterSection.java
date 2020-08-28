@@ -27,4 +27,10 @@ public class FooterSection {
 
     private Boolean showSection;
 
+    private String title_style;
+
+    private String image_style;
+
+    private String footer_link_style;
+
 }

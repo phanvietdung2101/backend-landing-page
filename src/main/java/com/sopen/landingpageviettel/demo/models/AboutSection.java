@@ -24,4 +24,12 @@ public class AboutSection {
     private List<AboutExpand> aboutExpandList;
 
     private Boolean showSection;
+
+    private String title_style;
+
+    private String text_style;
+
+    private String title_expand_style;
+
+    private String image_expand_style;
 }

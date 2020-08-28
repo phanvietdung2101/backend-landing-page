@@ -28,4 +28,6 @@ public class FeatureCarousel {
     @JsonIgnore
     @JoinColumn(name = "feature_carousel_section_id")
     private FeatureCarouselSection featureCarouselSection;
+
+
 }
