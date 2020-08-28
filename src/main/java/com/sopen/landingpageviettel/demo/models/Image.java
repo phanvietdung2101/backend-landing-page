@@ -1,5 +1,6 @@
 package com.sopen.landingpageviettel.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Image {
 
     private String url;
 
+    @JsonIgnore
     @Lob
     private byte[] data;
 }

@@ -24,7 +24,7 @@ public class HeroBranding {
     private String descriptionStyle;
 
     @NotEmpty
-    private String buttonTitle;
+    private String button_title;
 
     private String button_title_style;
 

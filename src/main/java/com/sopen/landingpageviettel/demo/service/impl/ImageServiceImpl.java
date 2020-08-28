@@ -5,6 +5,7 @@ import com.sopen.landingpageviettel.demo.repository.ImageRepository;
 import com.sopen.landingpageviettel.demo.service.ImageService;
 import com.sopen.landingpageviettel.demo.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +16,9 @@ import java.util.Optional;
 
 @Service
 public class ImageServiceImpl implements ImageService {
+    @Value("${yyy.app.domain:}")
+    String domain;
+
     @Autowired
     private ImageRepository imageRepository;
 
@@ -24,6 +28,8 @@ public class ImageServiceImpl implements ImageService {
         image.setData(file.getBytes());
         image.setName(file.getOriginalFilename());
         image = imageRepository.save(image);
+//        image.setUrl(domain + "/api/image/" + image.getId());
+//        image = imageRepository.save(image);
         // return image with only id
         image.setData(null);
         return new ServiceResult(image, "ok");
